@@ -1,0 +1,30 @@
+/* Default stylesheet and tools */
+body,
+html {
+	background: rgb(245, 245, 245);
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+#container {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+    justify-content: center; 
+    align-items: center; 
+	overflow: auto;
+
+
+}
+
+#container-image > img{
+	width: 150px;
+	border-radius: 10px;
+	transition: all 0.2s;
+}
+
