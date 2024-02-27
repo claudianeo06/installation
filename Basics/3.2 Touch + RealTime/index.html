@@ -1,0 +1,51 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>MAIND - Leonardo Angelucci</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="description" content="MAIND – SUPSI 2024" />
+    <meta name="keywords" content="Creative, Coding, SUPSI, 2024" />
+    <meta name="web_author" content="Leonardo Angelucci" />
+    <meta name="copyright" content="Leonardo Angelucci" />
+    <link href="src/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="main">
+      X: <span id="x"></span><br />
+      Y: <span id="y"></span><br />
+      Distamce: <span id="distance"></span><br />
+      TIME: <span id="time"></span><br />
+      ID: <span id="id"></span><br />
+
+
+      <div id="dot1"></div>
+      <div id="dot2"></div>
+      <div id="line" style="position: absolute; height: 2px; background: black;"></div>
+    </div>
+  </body>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="src/app.js"></script>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAIN - Leonardo Angelucci – Touch Points with Connecting Line</title>
+    <link href="src/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="main">
+      Distance: <span id="distanceOutput">0</span><br />
+      Rotation: <span id="rotationOutput">0</span><br />
+    </div>
+    <div id="drawingArea"></div>
+    <svg id="lineSvg"></svg>
+  </body>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="src/app.js"></script>
+</html>
