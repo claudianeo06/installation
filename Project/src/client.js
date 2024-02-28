@@ -11,34 +11,14 @@ const contentId = document.getElementById("id");
 const contentAlpha = document.getElementById("alpha");
 const contentBeta = document.getElementById("beta");
 const contentGamma = document.getElementById("gamma");
-const button = document.getElementById("accelPermsButton");
-const value = document.getElementById("value");
-const image = document.getElementById("image");
-
+const dot = document.getElementById("dot-red");
+const id = 1;
 let px = 50; // Position x and y
 let py = 50;
 let vx = 0.0; // Velocity x and y
 let vy = 0.0;
-
 let updateRate = 1 / 60; // Sensor refresh rate
-
-async function updateSupabase(px, py, rotation_degrees, frontToBack_degrees, leftToRight_degrees) {
-    let res = await database
-      .from(tableName)
-      .update({
-        values: {
-          x: px,
-          y: py,
-          alpha: rotation_degrees,
-          beta: frontToBack_degrees,
-          gamma: leftToRight_degrees,
-        },
-        updated_at: new Date(),
-      })
-      .eq("id", id);
-}
-
-let tableName = "accelerometer";
+let tableName = "Metacompass";
 document.addEventListener("DOMContentLoaded", async () => {
   //subscribe to changes in the
   database
@@ -59,13 +39,39 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function handleInserts(data) {
-  console.log(data);
-  contentX.innerHTML = data.values.x;
-  contentY.innerHTML = data.values.y;
-  contentTime.innerHTML = data.updated_at;
-  contentId.innerHTML = data.id;
-  contentAlpha.innerHTML = data.values.alpha;
-  contentBeta.innerHTML = data.values.beta;
-  contentGamma.innerHTML = data.values.gamma;
-  dot.setAttribute("style", "left:" + data.values.x  + "%;" + "top:" + data.values.y + "%;");
-}
+    console.log(data);
+  
+    // Assuming your container is 100x100 units
+    let normalizedY = normalizeAlpha(data.values.alpha, 160, 200, 0, 100);
+    let normalizedAlpha = normalize(data.values.beta, 10, 50, 100, 0); // Invert y-axisz
+  
+    dot.setAttribute(
+      "style",
+      `left:${normalizedAlpha}%; top:${normalizedY}%;`
+    );
+  
+    // Update other elements as before
+    contentX.innerHTML = data.values.x;
+    contentY.innerHTML = data.values.y;
+    contentTime.innerHTML = data.updated_at;
+    contentId.innerHTML = data.id;
+    contentAlpha.innerHTML = data.values.alpha;
+    contentBeta.innerHTML = data.values.beta;
+    contentGamma.innerHTML = data.values.gamma;
+  }
+  
+  function normalize(value, min, max, newMin, newMax) {
+    return ((value - min) / (max - min)) * (newMax - newMin) + newMin;
+  }
+  
+  function normalizeAlpha(alpha, minAlpha, maxAlpha, newMin, newMax) {
+    // Normalize alpha within its range, considering the circular nature (140 to 220)
+    if (alpha > 180) {
+      // Map from 180 to 220 to the right half
+      return normalize(alpha, 180, maxAlpha, (newMax - newMin) / 2, newMax);
+    } else {
+      // Map from 140 to 180 to the left half
+      return normalize(alpha, minAlpha, 180, newMin, (newMax - newMin) / 2);
+    }
+  }
+  

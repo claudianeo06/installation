@@ -19,22 +19,14 @@
       Alpha: <span id="alpha"></span><br />
       Beta: <span id="beta"></span><br />
       Gamma: <span id="gamma"></span><br />
-      Value: <span id="value"></span><br />
-      <button id="accelPermsButton">Get Accelerometer Permissions</button>
-      <div id="dot"></div>
-<!--     <img src="https://www.near.li/data/2018_06_dcs/ADHIHETTY-Roshan_00014.jpg" id="image" />--> 
+      TIME: <span id="time"></span><br />
+      ID: <span id="id"></span><br />
+      <button id="accelPermsButton" onclick="getAccel()" style="height: 50px">
+        Get Accelerometer Permissions
+      </button>
+      <div class="dot" style="left: 30%; top: 30%"></div>
     </div>
-    <div class="carousel">
-        <div class="carousel-images">
-          <img src="src/img/image1.jpg" alt="Image 1" style="width: 1000px; height: 800px;">
-          <img src="src/img/image2.jpg" alt="Image 2" style="width: 1000px; height: 800px;">
-          <img src="src/img/image3.jpg" alt="Image 3" style="width: 1000px; height: 800px;">
-          <!-- Add more images as needed -->
-        </div>
-        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-        <button class="next" onclick="moveSlide(1)">&#10095;</button>
-    </div>
-    
   </body>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script src="src/app.js"></script>
 </html>

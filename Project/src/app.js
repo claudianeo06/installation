@@ -11,150 +11,105 @@ const contentId = document.getElementById("id");
 const contentAlpha = document.getElementById("alpha");
 const contentBeta = document.getElementById("beta");
 const contentGamma = document.getElementById("gamma");
-const button = document.getElementById("accelPermsButton");
-const value = document.getElementById("value");
-const image = document.getElementById("image");
-
+const id = 1;
 let px = 50; // Position x and y
 let py = 50;
 let vx = 0.0; // Velocity x and y
 let vy = 0.0;
-
 let updateRate = 1 / 60; // Sensor refresh rate
+let tableName = "Metacompass";
+document.addEventListener("DOMContentLoaded", async () => {
+  //subscribe to changes in the
+  database
+    .channel(tableName)
+    .on(
+      "postgres_changes",
+      { event: "*", schema: "public", table: tableName },
+      (payload) => {
+        // handleInserts(payload.new);
+        console.log(payload.new);
+      }
+    )
+    .subscribe();
 
-let slideIndex = 0;
-let startPos = 0;
-let endPos = 0;
-let isDragging = false;
+  //select all data from sensors
+  let { data, error } = await database.from(tableName).select("*");
+  console.log(data[0]);
 
-let lastMoveTime = 0;
-
-let canMoveSlide = true; // Flag to control slide movement
-
-function attemptMoveSlide(px) {
-    // Check if we're allowed to move the slide
-    if (!canMoveSlide) return;
-
-    // Determine the direction based on px and ensure it's in the bounds to trigger a slide change
-    if (px <= 5 || px >= 87) {
-        // Move the carousel in the appropriate direction
-        moveSlide(px <= 5 ? -1 : 1);
-
-        // Prevent further moves
-        canMoveSlide = false;
-
-        // Set a timeout to re-allow movement after 3 seconds
-        setTimeout(() => {
-            canMoveSlide = true;
-        }, 3000);
-    }
-}
-
-button.addEventListener("click", () => {
-  getAccel();
+  //send the first data to the dom
+  handleInserts(data[0]);
 });
 
 async function getAccel() {
   DeviceMotionEvent.requestPermission().then((response) => {
     if (response == "granted") {
+      // Add a listener to get smartphone orientation
+      // in the alpha-beta-gamma axes (units in degrees)
       window.addEventListener("deviceorientation", (event) => {
+        // Expose each orientation angle in a more readable way
         rotation_degrees = event.alpha;
         frontToBack_degrees = event.beta;
         leftToRight_degrees = event.gamma;
 
+        // Update velocity according to how tilted the phone is
+        // Since phones are narrower than they are long, double the increase to the x velocity
         vx = vx + leftToRight_degrees * updateRate * 2;
         vy = vy + frontToBack_degrees * updateRate;
 
+        // Update position and clip it to bounds
         px = px + vx * 0.5;
-        if (px > 92 || px < 0) {
-          px = Math.max(0, Math.min(92, px)); // Clip px between 0-95
+        if (px > 98 || px < 0) {
+          px = Math.max(0, Math.min(98, px)); // Clip px between 0-98
           vx = 0;
         }
 
-        attemptMoveSlide(px);
-
         py = py + vy * 0.5;
-        if (py > 95 || py < 0) {
-          py = Math.max(0, Math.min(95, py)); // Clip py between 0-95
+        if (py > 98 || py < 0) {
+          py = Math.max(0, Math.min(98, py)); // Clip py between 0-98
           vy = 0;
         }
 
-        dot = document.getElementById("dot");
+        dot = document.getElementsByClassName("dot")[0];
         dot.setAttribute("style", "left:" + px + "%;" + "top:" + py + "%;");
 
         contentX.innerHTML = px;
         contentY.innerHTML = py;
+        contentTime.innerHTML = new Date();
+        contentId.innerHTML = id;
         contentAlpha.innerHTML = rotation_degrees;
         contentBeta.innerHTML = frontToBack_degrees;
         contentGamma.innerHTML = leftToRight_degrees;
 
-        value.innerHTML = `${py} > ${window.innerHeight / 2}`;
-
-        image.style.width = `${py / 2}%`;
+        updateSupabase(
+          px,
+          py,
+          rotation_degrees,
+          frontToBack_degrees,
+          leftToRight_degrees
+        );
       });
     }
   });
 }
-  
 
-function showSlides(n) {
-  let slides = document.querySelectorAll('.carousel-images img');
-  if (n >= slides.length) {slideIndex = 0;}
-  if (n < 0) {slideIndex = slides.length - 1;}
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slides[slideIndex].style.display = "block";  
+async function updateSupabase(
+  px,
+  py,
+  rotation_degrees,
+  frontToBack_degrees,
+  leftToRight_degrees
+) {
+  let res = await database
+    .from(tableName)
+    .update({
+      values: {
+        x: px,
+        y: py,
+        alpha: rotation_degrees,
+        beta: frontToBack_degrees,
+        gamma: leftToRight_degrees,
+      },
+      updated_at: new Date(),
+    })
+    .eq("id", id);
 }
-
-function moveSlide(n) {
-  showSlides(slideIndex += n);
-}
-
-// Initialize the carousel
-showSlides(slideIndex);
-
-// Add event listeners for dragging
-const carousel = document.querySelector('.carousel-images');
-carousel.addEventListener('mousedown', startDragging);
-carousel.addEventListener('mouseup', endDragging);
-carousel.addEventListener('mouseleave', endDragging);
-carousel.addEventListener('mousemove', drag);
-
-function startDragging(e) {
-  isDragging = true;
-  startPos = e.clientX;
-}
-
-function endDragging(e) {
-  if (!isDragging) return;
-  isDragging = false;
-  if (endPos - startPos > 100) {
-    // Dragged right
-    moveSlide(-1);
-  } else if (startPos - endPos > 100) {
-    // Dragged left
-    moveSlide(1);
-  }
-}
-
-function drag(e) {
-  if (!isDragging) return;
-  endPos = e.clientX;
-}
-
-async function updateSupabase(px, py, rotation_degrees, frontToBack_degrees, leftToRight_degrees) {
-    let res = await database
-      .from(tableName)
-      .update({
-        values: {
-          x: px,
-          y: py,
-          alpha: rotation_degrees,
-          beta: frontToBack_degrees,
-          gamma: leftToRight_degrees,
-        },
-        updated_at: new Date(),
-      })
-      .eq("id", id);
-  }
