@@ -42,8 +42,8 @@ function handleInserts(data) {
     console.log(data);
   
     // Assuming your container is 100x100 units
-    let normalizedY = normalizeAlpha(data.values.alpha, 160, 200, 0, 100);
-    let normalizedAlpha = normalize(data.values.beta, 10, 50, 100, 0); // Invert y-axisz
+    let normalizedY = normalize(data.values.beta, 10, 50, 100, 0); // Invert y-axis
+    let normalizedAlpha = normalizeAlpha(data.values.alpha, 200, 160, 0, 100);
   
     dot.setAttribute(
       "style",

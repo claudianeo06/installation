@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MAIND - Metadata Compass</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="description" content="MAIND – SUPSI 2024" />
+    <link href="src/client.css" rel="stylesheet" />
+    <link rel="preload" href="src/img/spain_1.jpg" as="image1">
+    <link rel="preload" href="src/img/spain_2.jpg" as="image2">
+    <link rel="preload" href="src/img/spain_3.jpg" as="image3">
+    <link rel="preload" href="src/img/spain_4.jpg" as="image4">
+    <link rel="preload" href="src/img/spain_5.jpg" as="image5">
+  </head>
+  <body>
+    <div id="main">
+      X: <span id="x"></span>
+      Y: <span id="y"></span>
+      Alpha: <span id="alpha"></span>
+      Beta: <span id="beta"></span>
+      Gamma: <span id="gamma"></span>
+      TIME: <span id="time"></span>
+      ID: <span id="id"></span>
+    </div>
+    <div class="screen">
+        <div id="spain">
+            <img src="src/img/spain_1.jpg" alt="Spain1" style="bottom: 300px; left: 50px; width: 100px; height: 80px;">
+            <img src="src/img/spain_2.jpg" alt="Spain2" style="bottom: 200px; left: 100px; width: 100px; height: 80px;">
+            <img src="src/img/spain_3.jpg" alt="Spain3" style="bottom: 250px; left: 150px; width: 80px; height: 100px;">
+            <img src="src/img/spain_4.jpg" alt="Spain4" style="bottom: 150px; left: 200px; width: 100px; height: 80px;">
+            <img src="src/img/spain_5.jpg" alt="Spain5" style="bottom: 100px; left: 250px; width: 100px; height: 80px;">
+            <img src="src/img/spain_6.jpg" alt="Spain6" style="bottom: 150px; left: 50px; width: 100px; height: 80px;">
+            <img src="src/img/spain_7.jpg" alt="Spain7" style="bottom: 200px; left: 300px; width: 100px; height: 80px;">
+            <img src="src/img/spain_8.jpg" alt="Spain8" style="bottom: 300px; left: 300px; width: 80px; height: 100px;">
+            <img src="src/img/spain_9.jpg" alt="Spain9" style="bottom: 100px; left: 150px; width: 80px; height: 100px;">
+            <img src="src/img/spain_10.jpg" alt="Spain10" style="bottom: 380px; left: 220px; width: 100px; height: 80px;">
+        </div>
+        <div id="dot-red"></div>
+    </div>
+
+  </body>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="src/client.js"></script>
+</html>

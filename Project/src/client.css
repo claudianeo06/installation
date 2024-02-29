@@ -7,7 +7,7 @@ html {
 	font-size: 1px;
 	padding: 5px;
     /* transition: all 0.5s ease; */
-    transform: rotate(270deg);
+    /* transform: rotate(270deg); */
 	height: 100vw;
 	width: 100vh;
     overflow-x: hidden;
@@ -51,5 +51,5 @@ html {
 
 #spain img{
     position: absolute;
-    transform: rotate(270deg);
+    /* transform: rotate(270deg); */
 }
