@@ -51,9 +51,6 @@ function handleInserts(data) {
       `left:${normalizedAlpha}%; top:${normalizedY}%;`
     );
 
-    // while (True){
-    // }
-
     // Check if conditions are met to show the image
     if ((data.values.beta > 0 && data.values.beta < 20) && (data.values.alpha > 200 && data.values.alpha < 220)) {
       const image1 = document.getElementById('uk');
