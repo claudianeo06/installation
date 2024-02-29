@@ -14,7 +14,7 @@ html {
 @media (max-width:960px) { 
 }
 
-#dot-red{
+#spotlight{
 	width: 200px;
 	height: 200px;
 	background-color: rgb(233, 224, 224);
@@ -23,3 +23,12 @@ html {
 	transition: all 0.5s ease;
     opacity: 50%;
 }
+
+#uk {
+	position: fixed; /* or 'absolute' if you prefer */
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: none; /* Initially hidden, can be shown using JS */
+  }
+  

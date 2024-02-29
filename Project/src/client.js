@@ -11,7 +11,7 @@ const contentId = document.getElementById("id");
 const contentAlpha = document.getElementById("alpha");
 const contentBeta = document.getElementById("beta");
 const contentGamma = document.getElementById("gamma");
-const dot = document.getElementById("dot-red");
+const dot = document.getElementById("spotlight");
 const id = 1;
 let px = 50; // Position x and y
 let py = 50;
@@ -19,6 +19,7 @@ let vx = 0.0; // Velocity x and y
 let vy = 0.0;
 let updateRate = 1 / 60; // Sensor refresh rate
 let tableName = "Metacompass";
+
 document.addEventListener("DOMContentLoaded", async () => {
   //subscribe to changes in the
   database
@@ -49,6 +50,20 @@ function handleInserts(data) {
       "style",
       `left:${normalizedAlpha}%; top:${normalizedY}%;`
     );
+
+    // while (True){
+    // }
+
+    // Check if conditions are met to show the image
+    if ((data.values.beta > 0 && data.values.beta < 20) && (data.values.alpha > 200 && data.values.alpha < 220)) {
+      const image1 = document.getElementById('uk');
+      image1.style.display = 'block'; // Show the image
+
+      // Hide the image after 5 seconds
+      setTimeout(() => {
+          uk.style.display = 'none';
+      }, 5000);
+    }
   
     // Update other elements as before
     contentX.innerHTML = data.values.x;
