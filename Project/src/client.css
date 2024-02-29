@@ -25,10 +25,10 @@ html {
 }
 
 #uk {
-	position: fixed; /* or 'absolute' if you prefer */
+	position: absolute; /* or 'absolute' if you prefer */
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%) scale(0.25);
 	display: none; /* Initially hidden, can be shown using JS */
   }
   

@@ -69,7 +69,7 @@ async function getAccel() {
           vy = 0;
         }
 
-        dot = document.getElementsByClassName("dot")[0];
+        dot = document.getElementsByClassName("spotlight")[0];
         dot.setAttribute("style", "left:" + px + "%;" + "top:" + py + "%;");
 
         contentX.innerHTML = px;

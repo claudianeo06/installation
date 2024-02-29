@@ -18,7 +18,7 @@ html {
 
 }
 
-.dot{
+.spotlight{
 	width: 30px;
 	height: 30px;
 	background-color: black;
@@ -26,7 +26,7 @@ html {
 	position:fixed;
 }
 
-#dot-red{
+#spotlight{
 	width: 20px;
 	height: 20px;
 	background-color: red;
