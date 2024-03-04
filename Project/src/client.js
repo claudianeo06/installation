@@ -16,9 +16,6 @@ let vx = 0.0; // Velocity x and y
 let vy = 0.0;
 let updateRate = 1 / 60; // Sensor refresh rate
 let tableName = "Metacompass";
-let allowUpdates = true;
-let conditionMetTime = null; // Track when the condition was first met
-let timerSet = false; // Flag to indicate if the timer has been set
 
 document.addEventListener("DOMContentLoaded", async () => {
   //subscribe to changes in the
@@ -36,17 +33,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   //select all data from sensors
   let { data, error } = await database.from(tableName).select("*");
   handleInserts(data[0]);
-
-  // let i = blocks.length,
-  //   dx,
-  //   dy,
-  //   block;
-  // while (i--) {
-  //   block = blocks[i];
-  //   dx = (block.cx - e.pageX) ** 2;
-  //   dy = (block.cy - e.pageY) ** 2;
-  //   block.tween.progress(1 - (dx + dy) / radius2);
-  // }
 });
 
 function handleInserts(data) {
@@ -62,26 +48,7 @@ function handleInserts(data) {
   );
 
   updateDotPosition(data.values.alpha, data.values.beta);
-
-  // const xDecimal = normalizedAlpha / 100, // Assuming alpha is normalized to 0-100 for the width
-  //   yDecimal = normalizedBeta / 100; // Assuming beta is normalized to 0-100 for the height
-
-  // const maxX = gallery.offsetWidth - window.innerWidth,
-  //   maxY = gallery.offsetHeight - window.innerHeight;
-
-  // const panX = maxX * xDecimal * -1,
-  //   panY = maxY * yDecimal * -1;
-
-  // gallery.animate(
-  //   {
-  //     transform: `translate(${panX}px, ${panY}px)`,
-  //   },
-  //   {
-  //     duration: 4000,
-  //     fill: "forwards",
-  //     easing: "ease",
-  //   }
-  // );
+  updateBasedOnDot();
 
   contentTime.innerHTML = data.updated_at;
   contentId.innerHTML = data.id;
@@ -131,22 +98,6 @@ function updateDotPosition(alpha, beta) {
   checkOverlap(dot);
 }
 
-// const radius = 300,
-//   maxScale = 3,
-//   blocks = document.querySelectorAll(".block"),
-//   radius2 = radius * radius,
-//   container = document.querySelector("#gallery");
-
-// blocks.forEach((block) => {
-//   let b = block.getBoundingClientRect();
-//   (block.cx = b.left + b.width / 2), (block.cy = b.top + b.height / 2);
-
-//   block.tween = gsap
-//     .to(block, { scale: maxScale, ease: "power1.in", paused: true })
-//     .progress(1)
-//     .progress(0);
-// });
-
 function updateBasedOnDot() {
   // Extract the dot's current position
   const dotRect = dot.getBoundingClientRect();
@@ -181,8 +132,8 @@ function updateBasedOnDot() {
 
   blocks.forEach((block) => {
     let b = block.getBoundingClientRect();
-    (block.cx = b.left + b.width / 2 + window.scrollX), // Updated to use scrollX
-      (block.cy = b.top + b.height / 2 + window.scrollY); // Use scrollY for vertical scrolling
+    (block.cx = b.left + b.width / 2 + window.scrollX),
+      (block.cy = b.top + b.height / 2 + window.scrollY);
 
     block.tween = gsap
       .to(block, { scale: maxScale, ease: "power1.in", paused: true })
@@ -202,10 +153,7 @@ function updateBasedOnDot() {
   }
 }
 
-// Assuming some mechanism updates the dot's position and calls this function
-// For demonstration, let's call it once initially
-updateBasedOnDot();
-
+// mouse event
 
 window.onmousemove = (e) => {
   const mouseX = e.clientX,
@@ -240,8 +188,8 @@ const radius = 300,
 
 blocks.forEach((block) => {
   let b = block.getBoundingClientRect();
-  (block.cx = b.left + b.width / 2 + window.pageXOffset),
-    (block.cy = b.top + b.height / 2 + window.pageYOffset);
+  (block.cx = b.left + b.width / 2 + window.scrollX),
+    (block.cy = b.top + b.height / 2 + window.scrollY);
 
   block.tween = gsap
     .to(block, { scale: maxScale, ease: "power1.in", paused: true })

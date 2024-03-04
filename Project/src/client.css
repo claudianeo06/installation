@@ -6,6 +6,7 @@ html {
 	width: 100vw;
 	margin: 0px;
 	overflow: hidden;
+	cursor: crosshair;
 }
   
 #gallery {
@@ -38,158 +39,158 @@ html {
 .block:nth-child(1) {
 	top: 0;
 	left: 10%;
-	background: url("./img/germany_1.jpg") no-repeat 50% 50%;
+	background: url("./img/1.jpeg") no-repeat 50% 50%;
 	background-size: cover;
 }
 
 .block:nth-child(2) {
 top: 5%;
 left: 0%;
-background: url("./img/germany_2.jpg") no-repeat 50% 50%;
+background: url("./img/2.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 
 .block:nth-child(3) {
 top: 25%;
 left: 15%;
-background: url("./img/germany_3.jpg") no-repeat 50% 50%;
+background: url("./img/3.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(4) {
 top: 50%;
 left: 10%;
-background: url("./img/germany_4.jpg") no-repeat 50% 50%;
+background: url("./img/4.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(5) {
 top: 8%;
 left: 20%;
-background: url("./img/uk_1.JPG") no-repeat 50% 50%;
+background: url("./img/5.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(6) {
 top: 40%;
 left: 0%;
-background: url("./img/belgium_1.jpg") no-repeat 50% 50%;
+background: url("./img/6.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(7) {
 top: 65%;
 left: 3%;
-background: url("./img/belgium_2.jpg") no-repeat 50% 50%;
+background: url("./img/7.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(8) {
 top: 75%;
 left: 20%;
-background: url("./img/belgium_3.jpg") no-repeat 50% 50%;
+background: url("./img/8.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(9) {
 top: 0;
 left: 35%;
-background: url("./img/belgium_4.jpg") no-repeat 50% 50%;
+background: url("./img/9.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(10) {
 top: 25%;
 left: 40%;
-background: url("./img/belgium_5.jpg") no-repeat 50% 50%;
+background: url("./img/10.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(11) {
 bottom: 0;
 right: 35%;
-background: url("./img/belgium_6.jpg") no-repeat 50% 50%;
+background: url("./img/11.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(12) {
 bottom: 75%;
 right: 20%;
-background: url("./img/belgium_7.jpg") no-repeat 50% 50%;
+background: url("./img/12.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(13) {
 bottom: 65%;
 right: 3%;
-background: url("./img/brazil_1.jpg") no-repeat 50% 50%;
+background: url("./img/13.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(14) {
 bottom: 35%;
 right: 45%;
-background: url("./img/china_1.jpg") no-repeat 50% 50%;
+background: url("./img/14.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(15) {
 bottom: 40%;
 right: 0%;
-background: url("./img/china_2.jpg") no-repeat 50% 50%;
+background: url("./img/15.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(16) {
 bottom: 8%;
 right: 20%;
-background: url("./img/croatia_1.jpg") no-repeat 50% 50%;
+background: url("./img/16.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(17) {
 bottom: 50%;
 right: 5%;
-background: url("./img/croatia_2.jpg") no-repeat 50% 50%;
+background: url("./img/17.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(18) {
 bottom: 25%;
 right: 15%;
-background: url("./img/czeck_republic_1.jpg") no-repeat 50% 50%;
+background: url("./img/18.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(19) {
 bottom: 5%;
 right: 3%;
-background: url("./img/czeck_republic_2.jpg") no-repeat 50% 50%;
+background: url("./img/19.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(20) {
 bottom: 0;
 right: 10%;
-background: url("./img/czeck_republic_3.jpg") no-repeat 50% 50%;
+background: url("./img/20.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(21) {
 top: 2%;
 left: 50%;
-background: url("./img/denmark_1.JPG") no-repeat 50% 50%;
+background: url("./img/21.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(22) {
 top: 35%;
 left: 63%;
-background: url("./img/finland_1.jpg") no-repeat 50% 50%;
+background: url("./img/22.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(23) {
 top: 45%;
 left: 25%;
-background: url("./img/france_1.jpg") no-repeat 50% 50%;
+background: url("./img/23.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(24) {
 top: 60%;
 left: 27%;
-background: url("./img/france_2.jpg") no-repeat 50% 50%;
+background: url("./img/24.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(25) {
 top: 12%;
 left: 70%;
-background: url("./img/georgia_1.JPG") no-repeat 50% 50%;
+background: url("./img/25.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
 .block:nth-child(26) {
 bottom: 12%;
 right: 70%;
-background: url("./img/greece_1.jpg") no-repeat 50% 50%;
+background: url("./img/26.jpeg") no-repeat 50% 50%;
 background-size: cover;
 }
