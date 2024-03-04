@@ -37,23 +37,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   let { data, error } = await database.from(tableName).select("*");
   handleInserts(data[0]);
 
-  let i = blocks.length,
-    dx,
-    dy,
-    block;
-  while (i--) {
-    block = blocks[i];
-    dx = (block.cx - e.pageX) ** 2;
-    dy = (block.cy - e.pageY) ** 2;
-    block.tween.progress(1 - (dx + dy) / radius2);
-  }
+  // let i = blocks.length,
+  //   dx,
+  //   dy,
+  //   block;
+  // while (i--) {
+  //   block = blocks[i];
+  //   dx = (block.cx - e.pageX) ** 2;
+  //   dy = (block.cy - e.pageY) ** 2;
+  //   block.tween.progress(1 - (dx + dy) / radius2);
+  // }
 });
 
 function handleInserts(data) {
   console.log(data);
 
   // Assuming your container is 100x100 units
-  let normalizedBeta = normalize(data.values.beta, 0, 40, 100, 0); // Invert y-axis
+  let normalizedBeta = normalize(data.values.beta, 0, 40, 30, -70); // Invert y-axis
   let normalizedAlpha = normalizeAlpha(data.values.alpha, 200, 140, 0, 100);
 
   dot.setAttribute(
@@ -61,25 +61,27 @@ function handleInserts(data) {
     `left:${normalizedAlpha}%; top:${normalizedBeta}%;`
   );
 
-  const xDecimal = normalizedAlpha / 100, // Assuming alpha is normalized to 0-100 for the width
-    yDecimal = normalizedBeta / 100; // Assuming beta is normalized to 0-100 for the height
+  updateDotPosition(data.values.alpha, data.values.beta);
 
-  const maxX = gallery.offsetWidth - window.innerWidth,
-    maxY = gallery.offsetHeight - window.innerHeight;
+  // const xDecimal = normalizedAlpha / 100, // Assuming alpha is normalized to 0-100 for the width
+  //   yDecimal = normalizedBeta / 100; // Assuming beta is normalized to 0-100 for the height
 
-  const panX = maxX * xDecimal * -1,
-    panY = maxY * yDecimal * -1;
+  // const maxX = gallery.offsetWidth - window.innerWidth,
+  //   maxY = gallery.offsetHeight - window.innerHeight;
 
-  gallery.animate(
-    {
-      transform: `translate(${panX}px, ${panY}px)`,
-    },
-    {
-      duration: 4000,
-      fill: "forwards",
-      easing: "ease",
-    }
-  );
+  // const panX = maxX * xDecimal * -1,
+  //   panY = maxY * yDecimal * -1;
+
+  // gallery.animate(
+  //   {
+  //     transform: `translate(${panX}px, ${panY}px)`,
+  //   },
+  //   {
+  //     duration: 4000,
+  //     fill: "forwards",
+  //     easing: "ease",
+  //   }
+  // );
 
   contentTime.innerHTML = data.updated_at;
   contentId.innerHTML = data.id;
@@ -102,6 +104,134 @@ function normalizeAlpha(alpha, minAlpha, maxAlpha, newMin, newMax) {
   }
 }
 
+function checkOverlap(dot) {
+  const dotRect = dot.getBoundingClientRect();
+  const blocks = document.querySelectorAll(".block");
+
+  blocks.forEach((block) => {
+    const blockRect = block.getBoundingClientRect();
+    const overlaps = !(
+      blockRect.right < dotRect.left ||
+      blockRect.left > dotRect.right ||
+      blockRect.bottom < dotRect.top ||
+      blockRect.top > dotRect.bottom
+    );
+
+    if (overlaps) {
+      // Apply hover effect
+      block.style.zIndex = 2;
+    } else {
+      // Remove hover effect
+      block.style.zIndex = ""; // Or any default z-index value
+    }
+  });
+}
+
+function updateDotPosition(alpha, beta) {
+  checkOverlap(dot);
+}
+
+// const radius = 300,
+//   maxScale = 3,
+//   blocks = document.querySelectorAll(".block"),
+//   radius2 = radius * radius,
+//   container = document.querySelector("#gallery");
+
+// blocks.forEach((block) => {
+//   let b = block.getBoundingClientRect();
+//   (block.cx = b.left + b.width / 2), (block.cy = b.top + b.height / 2);
+
+//   block.tween = gsap
+//     .to(block, { scale: maxScale, ease: "power1.in", paused: true })
+//     .progress(1)
+//     .progress(0);
+// });
+
+function updateBasedOnDot() {
+  // Extract the dot's current position
+  const dotRect = dot.getBoundingClientRect();
+  const mouseX = dotRect.left + dotRect.width / 2,
+    mouseY = dotRect.top + dotRect.height / 2;
+
+  const xDecimal = mouseX / window.innerWidth,
+    yDecimal = mouseY / window.innerHeight;
+
+  const maxX = gallery.offsetWidth - window.innerWidth,
+    maxY = gallery.offsetHeight - window.innerHeight;
+
+  const panX = maxX * xDecimal * -1,
+    panY = maxY * yDecimal * -1;
+
+  gallery.animate(
+    {
+      transform: `translate(${panX}px, ${panY}px)`,
+    },
+    {
+      duration: 4000,
+      fill: "forwards",
+      easing: "ease",
+    }
+  );
+
+  const radius = 300,
+    maxScale = 3,
+    blocks = document.querySelectorAll(".block"),
+    radius2 = radius * radius,
+    container = document.querySelector("#gallery");
+
+  blocks.forEach((block) => {
+    let b = block.getBoundingClientRect();
+    (block.cx = b.left + b.width / 2 + window.scrollX), // Updated to use scrollX
+      (block.cy = b.top + b.height / 2 + window.scrollY); // Use scrollY for vertical scrolling
+
+    block.tween = gsap
+      .to(block, { scale: maxScale, ease: "power1.in", paused: true })
+      .progress(1)
+      .progress(0);
+  });
+
+  let i = blocks.length,
+    dx,
+    dy,
+    block;
+  while (i--) {
+    block = blocks[i];
+    dx = (block.cx - mouseX) ** 2;
+    dy = (block.cy - mouseY) ** 2;
+    block.tween.progress(1 - (dx + dy) / radius2);
+  }
+}
+
+// Assuming some mechanism updates the dot's position and calls this function
+// For demonstration, let's call it once initially
+updateBasedOnDot();
+
+
+window.onmousemove = (e) => {
+  const mouseX = e.clientX,
+    mouseY = e.clientY;
+
+  const xDecimal = mouseX / window.innerWidth,
+    yDecimal = mouseY / window.innerHeight;
+
+  const maxX = gallery.offsetWidth - window.innerWidth,
+    maxY = gallery.offsetHeight - window.innerHeight;
+
+  const panX = maxX * xDecimal * -1,
+    panY = maxY * yDecimal * -1;
+
+  gallery.animate(
+    {
+      transform: `translate(${panX}px, ${panY}px)`,
+    },
+    {
+      duration: 4000,
+      fill: "forwards",
+      easing: "ease",
+    }
+  );
+};
+
 const radius = 300,
   maxScale = 3,
   blocks = document.querySelectorAll(".block"),
@@ -110,10 +240,24 @@ const radius = 300,
 
 blocks.forEach((block) => {
   let b = block.getBoundingClientRect();
-  (block.cx = b.left + b.width / 2), (block.cy = b.top + b.height / 2);
+  (block.cx = b.left + b.width / 2 + window.pageXOffset),
+    (block.cy = b.top + b.height / 2 + window.pageYOffset);
 
   block.tween = gsap
     .to(block, { scale: maxScale, ease: "power1.in", paused: true })
     .progress(1)
     .progress(0);
+});
+
+document.addEventListener("mousemove", (e) => {
+  let i = blocks.length,
+    dx,
+    dy,
+    block;
+  while (i--) {
+    block = blocks[i];
+    dx = (block.cx - e.pageX) ** 2;
+    dy = (block.cy - e.pageY) ** 2;
+    block.tween.progress(1 - (dx + dy) / radius2);
+  }
 });
