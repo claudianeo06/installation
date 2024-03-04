@@ -15,8 +15,8 @@ html {
 }
 
 #spotlight{
-	width: 200px;
-	height: 200px;
+	width: 100px;
+	height: 100px;
 	background-color: rgb(233, 224, 224);
 	border-radius: 75%;
 	position:relative;
@@ -24,11 +24,31 @@ html {
     opacity: 50%;
 }
 
+.overlay_image {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5); /* Black background with 50% opacity */
+	z-index: 0; /* Ensure it sits above other content but below the popup image */
+	display: none; /* Initially hidden */
+}
+
 #uk {
-	position: absolute; /* or 'absolute' if you prefer */
+	position: absolute; 
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%) scale(0.25);
+	z-index: 10;
+	display: none; /* Initially hidden, can be shown using JS */
+}
+  
+#germany {
+	position: absolute; 
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0.25);
+	z-index: 10;
 	display: none; /* Initially hidden, can be shown using JS */
   }
-  
