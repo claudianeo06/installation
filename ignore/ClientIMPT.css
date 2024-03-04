@@ -1,0 +1,82 @@
+/* Default stylesheet and tools */
+body,
+html {
+	background: url('img/background.jpg') center center/cover no-repeat fixed;
+	height: 100vh;
+	width: 100vw;
+    overflow: hidden;
+}
+
+#container {
+	position: relative;
+}
+
+@media (max-width:960px) { 
+}
+
+#spotlight{
+	width: 100px;
+	height: 100px;
+	background-color: rgb(233, 224, 224);
+	border-radius: 75%;
+	position:relative;
+	transition: all 0.5s ease;
+    opacity: 50%;
+}
+
+#overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5); /* Black background with 50% opacity */
+	z-index: 5; /* Ensure it sits above other content but below the popup image */
+	display: none; /* Initially hidden */
+}
+
+.images-container {
+	position: relative;
+	width: 100%; /* Cover the desired area, e.g., full viewport width */
+	height: 100vh; /* Example: full viewport height */
+}
+
+#uk {
+	position: absolute; 
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0.25);
+	z-index: 10;
+}
+  
+#germany1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(0.25); 
+  z-index: 10;
+}
+
+#germany2 {
+  position: absolute;
+  top: 0;
+  right: 50%; 
+  transform: translate(50%, 0%) scale(0.25); 
+  z-index: 10;
+}
+
+#germany3 {
+	position: absolute; 
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0.25);
+	z-index: 10;
+}
+
+#germany4 {
+	position: absolute;
+	bottom: 20%;
+	left: 0%;
+	transform: translate(0%, 50%) scale(0.25); 
+	z-index: 10;
+}

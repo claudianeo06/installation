@@ -8,6 +8,7 @@ const contentId = document.getElementById("id");
 const contentAlpha = document.getElementById("alpha");
 const contentBeta = document.getElementById("beta");
 const dot = document.getElementById("spotlight");
+const gallery = document.getElementById("gallery");
 const id = 1;
 let px = 50; // Position x and y
 let py = 50;
@@ -16,6 +17,8 @@ let vy = 0.0;
 let updateRate = 1 / 60; // Sensor refresh rate
 let tableName = "Metacompass";
 let allowUpdates = true;
+let conditionMetTime = null; // Track when the condition was first met
+let timerSet = false; // Flag to indicate if the timer has been set
 
 document.addEventListener("DOMContentLoaded", async () => {
   //subscribe to changes in the
@@ -25,9 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       "postgres_changes",
       { event: "*", schema: "public", table: tableName },
       (payload) => {
-        if (allowUpdates) {
-          handleInserts(payload.new);
-        }
+        handleInserts(payload.new);
       }
     )
     .subscribe();
@@ -35,37 +36,50 @@ document.addEventListener("DOMContentLoaded", async () => {
   //select all data from sensors
   let { data, error } = await database.from(tableName).select("*");
   handleInserts(data[0]);
+
+  let i = blocks.length,
+    dx,
+    dy,
+    block;
+  while (i--) {
+    block = blocks[i];
+    dx = (block.cx - e.pageX) ** 2;
+    dy = (block.cy - e.pageY) ** 2;
+    block.tween.progress(1 - (dx + dy) / radius2);
+  }
 });
 
 function handleInserts(data) {
   console.log(data);
 
   // Assuming your container is 100x100 units
-  let normalizedY = normalize(data.values.beta, 10, 50, 100, 0); // Invert y-axis
-  let normalizedAlpha = normalizeAlpha(data.values.alpha, 200, 160, 0, 100);
-  dot.setAttribute("style", `left:${normalizedAlpha}%; top:${normalizedY}%;`);
+  let normalizedBeta = normalize(data.values.beta, 0, 40, 100, 0); // Invert y-axis
+  let normalizedAlpha = normalizeAlpha(data.values.alpha, 200, 140, 0, 100);
 
-  showImageForCondition(
-    "uk",
-    0,
-    20,
-    200,
-    220,
-    5000,
-    data.values.beta,
-    data.values.alpha
-  ); // For image_1
-  showImageForCondition(
-    "germany",
-    0,
-    20,
-    180,
-    200,
-    5000,
-    data.values.beta,
-    data.values.alpha
-  ); // For image_2
-  // Add more calls as needed for different images and conditions
+  dot.setAttribute(
+    "style",
+    `left:${normalizedAlpha}%; top:${normalizedBeta}%;`
+  );
+
+  const xDecimal = normalizedAlpha / 100, // Assuming alpha is normalized to 0-100 for the width
+    yDecimal = normalizedBeta / 100; // Assuming beta is normalized to 0-100 for the height
+
+  const maxX = gallery.offsetWidth - window.innerWidth,
+    maxY = gallery.offsetHeight - window.innerHeight;
+
+  const panX = maxX * xDecimal * -1,
+    panY = maxY * yDecimal * -1;
+
+  gallery.animate(
+    {
+      transform: `translate(${panX}px, ${panY}px)`,
+    },
+    {
+      duration: 4000,
+      fill: "forwards",
+      easing: "ease",
+    }
+  );
 
   contentTime.innerHTML = data.updated_at;
   contentId.innerHTML = data.id;
@@ -88,38 +102,18 @@ function normalizeAlpha(alpha, minAlpha, maxAlpha, newMin, newMax) {
   }
 }
 
-function showImageForCondition(
-  imageId,
-  betaMin,
-  betaMax,
-  alphaMin,
-  alphaMax,
-  duration,
-  beta,
-  alpha
-) {
-  if (!allowUpdates) return;
-  // Check if conditions are met to show the image
-  if (
-    beta > betaMin &&
-    beta < betaMax &&
-    alpha > alphaMin &&
-    alpha < alphaMax
-  ) {
-    const overlay = document.querySelector(".overlay_image");
-    const image = document.getElementById(imageId);
+const radius = 300,
+  maxScale = 3,
+  blocks = document.querySelectorAll(".block"),
+  radius2 = radius * radius,
+  container = document.querySelector("#gallery");
 
-    overlay.style.display = "block"; // Show the overlay
-    image.style.display = "block"; // Show the image
+blocks.forEach((block) => {
+  let b = block.getBoundingClientRect();
+  (block.cx = b.left + b.width / 2), (block.cy = b.top + b.height / 2);
 
-    // Temporarily disallow updates
-    allowUpdates = false;
-
-    // Hide the image and overlay after specified duration
-    setTimeout(() => {
-      overlay.style.display = "none"; // Hide the overlay
-      image.style.display = "none"; // Hide the image
-      allowUpdates = true; // Re-allow updates after the timeout
-    }, duration);
-  }
-}
+  block.tween = gsap
+    .to(block, { scale: maxScale, ease: "power1.in", paused: true })
+    .progress(1)
+    .progress(0);
+});

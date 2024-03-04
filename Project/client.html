@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MAIND - Metadata Compass</title>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
+    <title>MAIND - Metadata Compass</title>
     <meta name="description" content="MAIND – SUPSI 2024" />
     <link href="src/client.css" rel="stylesheet" />
   </head>
@@ -20,16 +23,49 @@
       ID: <span id="id"></span>
     </div>
 
-    <div id="spotlight"></div>
-
-    <!-- <div id="overlay" style="display: none;"></div> -->
-    <div class="overlay_image" style="display: none;">
-      <img src="src/img/uk_1.JPG" alt="uk_1" id="uk" style="display: none;">
-      <img src="src/img/germany_1.jpg" alt="germany_1" id="germany" style="display: none;">
+    <div id="gallery">
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
     </div>
 
+    <div id="spotlight"></div>
+
+    <div id="overlay" style="display: none;">
+      <div class="images-container">
+        <img src="src/img/uk_1.JPG" alt="uk_1" id="uk" style="display: none;">
+        <img src="src/img/germany_1.jpg" alt="germany_1" id="germany1" style="display: none;">
+        <img src="src/img/germany_2.jpg" alt="germany_2" id="germany2" style="display: none;">
+        <img src="src/img/germany_3.jpg" alt="germany_3" id="germany3" style="display: none;">
+        <img src="src/img/germany_4.jpg" alt="germany_4" id="germany4" style="display: none;">
+      </div>
+    </div>
 
   </body>
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
   <script src="src/client.js"></script>
 </html>

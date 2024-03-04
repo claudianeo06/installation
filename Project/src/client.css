@@ -1,17 +1,17 @@
 /* Default stylesheet and tools */
 body,
 html {
-	background: url('img/background.jpg') center center/cover no-repeat fixed;
+	background: url('img/background.png') center center/cover no-repeat fixed;
 	height: 100vh;
 	width: 100vw;
-    overflow-x: hidden;
+	margin: 0px;
+	overflow: hidden;
 }
-
-#container {
+  
+#gallery {
+	height: 75vmax;
+	width: 95vmax;
 	position: relative;
-}
-
-@media (max-width:960px) { 
 }
 
 #spotlight{
@@ -21,34 +21,175 @@ html {
 	border-radius: 75%;
 	position:relative;
 	transition: all 0.5s ease;
-    opacity: 50%;
+	opacity: 50%;
 }
 
-.overlay_image {
-	position: fixed;
+.block {
+	position: absolute;
+	width: 150px;
+	height: 200px;
+	z-index: 1;
+}
+
+.block:hover {
+	z-index: 2;
+}
+
+.block:nth-child(1) {
 	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.5); /* Black background with 50% opacity */
-	z-index: 0; /* Ensure it sits above other content but below the popup image */
-	display: none; /* Initially hidden */
+	left: 10%;
+	background: url("./img/germany_1.jpg") no-repeat 50% 50%;
+	background-size: cover;
 }
 
-#uk {
-	position: absolute; 
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%) scale(0.25);
-	z-index: 10;
-	display: none; /* Initially hidden, can be shown using JS */
+.block:nth-child(2) {
+top: 5%;
+left: 0%;
+background: url("./img/germany_2.jpg") no-repeat 50% 50%;
+background-size: cover;
 }
-  
-#germany {
-	position: absolute; 
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%) scale(0.25);
-	z-index: 10;
-	display: none; /* Initially hidden, can be shown using JS */
-  }
+
+.block:nth-child(3) {
+top: 25%;
+left: 15%;
+background: url("./img/germany_3.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(4) {
+top: 50%;
+left: 10%;
+background: url("./img/germany_4.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(5) {
+top: 8%;
+left: 20%;
+background: url("./img/uk_1.JPG") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(6) {
+top: 40%;
+left: 0%;
+background: url("./img/belgium_1.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(7) {
+top: 65%;
+left: 3%;
+background: url("./img/belgium_2.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(8) {
+top: 75%;
+left: 20%;
+background: url("./img/belgium_3.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(9) {
+top: 0;
+left: 35%;
+background: url("./img/belgium_4.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(10) {
+top: 25%;
+left: 40%;
+background: url("./img/belgium_5.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(11) {
+bottom: 0;
+right: 35%;
+background: url("./img/belgium_6.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(12) {
+bottom: 75%;
+right: 20%;
+background: url("./img/belgium_7.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(13) {
+bottom: 65%;
+right: 3%;
+background: url("./img/brazil_1.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(14) {
+bottom: 35%;
+right: 45%;
+background: url("./img/china_1.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(15) {
+bottom: 40%;
+right: 0%;
+background: url("./img/china_2.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(16) {
+bottom: 8%;
+right: 20%;
+background: url("./img/croatia_1.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(17) {
+bottom: 50%;
+right: 5%;
+background: url("./img/croatia_2.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(18) {
+bottom: 25%;
+right: 15%;
+background: url("./img/czeck_republic_1.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(19) {
+bottom: 5%;
+right: 3%;
+background: url("./img/czeck_republic_2.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(20) {
+bottom: 0;
+right: 10%;
+background: url("./img/czeck_republic_3.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(21) {
+top: 2%;
+left: 50%;
+background: url("./img/denmark_1.JPG") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(22) {
+top: 35%;
+left: 63%;
+background: url("./img/finland_1.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(23) {
+top: 45%;
+left: 25%;
+background: url("./img/france_1.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(24) {
+top: 60%;
+left: 27%;
+background: url("./img/france_2.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(25) {
+top: 12%;
+left: 70%;
+background: url("./img/georgia_1.JPG") no-repeat 50% 50%;
+background-size: cover;
+}
+.block:nth-child(26) {
+bottom: 12%;
+right: 70%;
+background: url("./img/greece_1.jpg") no-repeat 50% 50%;
+background-size: cover;
+}
