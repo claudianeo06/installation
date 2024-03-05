@@ -55,13 +55,61 @@ function handleInserts(data) {
   contentGamma.innerHTML = data.values.gamma;
 }
 
-//mouse event
-window.onmousemove = (e) => {
-  const mouseX = e.clientX,
-    mouseY = e.clientY;
+function adjustGalleryMargins(data) {
+  const gallery = document.getElementById("gallery");
 
-  const xDecimal = mouseX / window.innerWidth,
-    yDecimal = mouseY / window.innerHeight;
+  const marginLeft = mapRange(data.values.alpha, 60, 300, -50, 50);
+  const marginTop = mapRange(data.values.beta, 0, 40, -5, 5);
+
+  // Apply the calculated margins to the gallery
+  gallery.style.marginLeft = `${marginLeft}vw`;
+  gallery.style.marginTop = `${marginTop}vw`;
+}
+
+function mapRange(value, fromSource, toSource, fromTarget, toTarget) {
+  return (
+    ((value - fromSource) / (toSource - fromSource)) * (toTarget - fromTarget) +
+    fromTarget
+  );
+}
+
+function updateDotPosition(x, y) {
+  checkOverlap(dot);
+}
+
+function checkOverlap(dot) {
+  const dotRect = dot.getBoundingClientRect();
+  const blocks = document.querySelectorAll(".block");
+
+  blocks.forEach((block) => {
+    const blockRect = block.getBoundingClientRect();
+    const overlaps = !(
+      blockRect.right < dotRect.left ||
+      blockRect.left > dotRect.right ||
+      blockRect.bottom < dotRect.top ||
+      blockRect.top > dotRect.bottom
+    );
+
+    if (overlaps) {
+      // Apply hover effect
+      block.style.zIndex = 2;
+      block.style.opacity = 100;
+    } else {
+      // Remove hover effect
+      block.style.zIndex = "";
+      block.style.opacity = "";
+    }
+  });
+}
+
+function updateBasedOnDot() {
+  // Extract the dot's current position
+  const dotRect = dot.getBoundingClientRect();
+  const dotX = dotRect.left + dotRect.width / 2,
+    dotY = dotRect.top + dotRect.height / 2;
+
+  const xDecimal = dotX / window.innerWidth,
+    yDecimal = dotY / window.innerHeight;
 
   const maxX = gallery.offsetWidth - window.innerWidth,
     maxY = gallery.offsetHeight - window.innerHeight;
@@ -79,42 +127,37 @@ window.onmousemove = (e) => {
       easing: "ease",
     }
   );
-};
 
-const radius = 300,
-  maxScale = 3,
-  blocks = document.querySelectorAll(".block"),
-  radius2 = radius * radius,
-  container = document.querySelector("#gallery");
+  const radius = 300,
+    maxScale = 3,
+    blocks = document.querySelectorAll(".block");
 
-blocks.forEach((block) => {
-  let b = block.getBoundingClientRect();
-  block.cx = b.left + b.width / 2 + window.scrollX;
-  block.cy = b.top + b.height / 2 + window.scrollY;
+  blocks.forEach((block) => {
+    let b = block.getBoundingClientRect();
+    (block.cx = b.left + b.width / 2 + window.scrollX),
+      (block.cy = b.top + b.height / 2 + window.scrollY);
 
-  block.tween = gsap
-    .to(block, { scale: maxScale, ease: "power1.in", paused: true })
-    .progress(1)
-    .progress(0);
-
-  block.addEventListener("mouseenter", () => {
-    block.style.opacity = "100%"; 
+    block.tween = gsap
+      .to(block, { scale: maxScale, ease: "power1.in", paused: true })
+      .progress(1)
+      .progress(0);
   });
 
-  block.addEventListener("mouseleave", () => {
-    block.style.opacity = "50%"; 
-  });
-});
-
-document.addEventListener("mousemove", (e) => {
   let i = blocks.length,
     dx,
     dy,
     block;
   while (i--) {
     block = blocks[i];
-    dx = (block.cx - e.pageX) ** 2;
-    dy = (block.cy - e.pageY) ** 2;
-    block.tween.progress(1 - (dx + dy) / radius2);
+    dx = (block.cx - dotX) ** 2;
+    dy = (block.cy - dotY) ** 2;
+    let distance = Math.sqrt(dx + dy);
+
+    if (distance > radius) {
+      gsap.to(block, { scale: 1, ease: "power1.inOut", duration: 0.5 }); // Reset scale with animation
+    } else {
+      let progress = Math.max(0, 1 - distance / radius);
+      block.tween.progress(progress);
+    }
   }
-});
+}

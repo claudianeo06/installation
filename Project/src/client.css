@@ -13,9 +13,9 @@ html {
 	width: 110vw;
 	position: relative;
 	margin-left: 5vw;
-	margin-top: 5vw;
+	margin-top: -5vw;
 }
-#spotlight{
+/* #spotlight{
 	width: 100px;
 	height: 100px;
 	background-color: rgb(233, 224, 224);
@@ -25,7 +25,7 @@ html {
 	margin-top: -2.5vw;
 	transition: all 0.5s ease;
 	opacity: 50%;
-}
+} */
 
 .block {
 	position: absolute;
@@ -33,383 +33,434 @@ html {
 	height: 200px;
 	z-index: 1;
 }
-/* .block:hover {
+.block:hover {
 	z-index: 2;
-	opacity: 50%;
-} */
+	opacity: 100%;
+}
 .block:nth-child(1) {
-	top: 0;
-	left: 10%;
-	background: url("./img/1.jpeg") no-repeat 50% 50%;
+	top: 2%;
+	left: 15%;
+	background: url("./img/denmark_1.JPG") no-repeat 50% 50%;
 	background-size: cover;
 	opacity: 50%;
+	background-size: 90%;
 }
 .block:nth-child(2) {
-	top: 5%;
-	left: 0%;
-	background: url("./img/2.jpeg") no-repeat 50% 50%;
+	top: 0%;
+	right: 20%;
+	background: url("./img/latvia_1.jpg") no-repeat 50% 50%;
 	background-size: cover;
 	opacity: 50%;
+	background-size: 75%;
 }
 .block:nth-child(3) {
-	top: 25%;
-	left: 15%;
-	background: url("./img/3.jpeg") no-repeat 50% 50%;
+	top: 10%;
+	right: 29%;
+	background: url("./img/lithuania_1.jpg") no-repeat 50% 50%;
 	background-size: cover;
 	opacity: 50%;
+	background-size: 50%;
 }
 .block:nth-child(4) {
-	top: 50%;
-	left: 10%;
-	background: url("./img/4.jpeg") no-repeat 50% 50%;
+	top: 18%;
+	right: 35%;
+	background: url("./img/poland_3.jpg") no-repeat 50% 50%;
 	background-size: cover;
 	opacity: 50%;
+	background-size: 90%;
 }
 .block:nth-child(5) {
-	top: 8%;
-	left: 20%;
-	background: url("./img/5.jpeg") no-repeat 50% 50%;
+	top: 21%;
+	right: 42%;
+	background: url("./img/poland_2.jpg") no-repeat 50% 50%;
 	background-size: cover;
 	opacity: 50%;
+	background-size: 75%;
 }
 .block:nth-child(6) {
-	top: 40%;
-	left: 0%;
-	background: url("./img/6.jpeg") no-repeat 50% 50%;
+	top: 18%;
+	right: 46%;
+	background: url("./img/poland_1.jpg") no-repeat 50% 50%;
 	background-size: cover;
 	opacity: 50%;
+	background-size: 75%;
 }
 .block:nth-child(7) {
-	top: 65%;
-	left: 3%;
-	background: url("./img/7.jpeg") no-repeat 50% 50%;
+	top: 28%;
+	right: 40%;
+	background: url("./img/poland_4.jpg") no-repeat 50% 50%;
 	background-size: cover;
 	opacity: 50%;
+	background-size: 75%;
 }
 .block:nth-child(8) {
-	top: 75%;
-	left: 20%;
-	background: url("./img/8.jpeg") no-repeat 50% 50%;
+	top: 30%;
+	right: 35%;
+	background: url("./img/poland_5.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 75%;
 }
 .block:nth-child(9) {
-	top: 0;
-	left: 35%;
-	background: url("./img/9.jpeg") no-repeat 50% 50%;
+	top: 18%;
+	left: 28%;
+	background: url("./img/germany_1.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 90%;
 }
 .block:nth-child(10) {
-	top: 25%;
-	left: 40%;
-	background: url("./img/10.jpeg") no-repeat 50% 50%;
+	top: 20%;
+	left: 34%;
+	background: url("./img/germany_2.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 75%;
 }
 .block:nth-child(11) {
-	bottom: 0;
-	right: 35%;
-	background: url("./img/11.jpeg") no-repeat 50% 50%;
+	top: 28%;
+	left: 29%;
+	background: url("./img/germany_3.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 100%;
 }
 .block:nth-child(12) {
-	bottom: 75%;
-	right: 20%;
-	background: url("./img/12.jpeg") no-repeat 50% 50%;
+	top: 35%;
+	left: 32%;
+	background: url("./img/germany_4.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 95%;
 }
 .block:nth-child(13) {
-	bottom: 65%;
-	right: 3%;
-	background: url("./img/13.jpeg") no-repeat 50% 50%;
+	top: 21%;
+	left: 18%;
+	background: url("./img/netherlands_1.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 75%;
 }
 .block:nth-child(14) {
-	bottom: 35%;
-	right: 45%;
-	background: url("./img/14.jpeg") no-repeat 50% 50%;
+	top: 17%;
+	left: 20%;
+	background: url("./img/netherlands_2.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 55%;
 }
 .block:nth-child(15) {
-	bottom: 40%;
-	right: 0%;
-	background: url("./img/15.jpeg") no-repeat 50% 50%;
+	top: 19%;
+	left: 15%;
+	background: url("./img/netherlands_3.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(16) {
-	bottom: 8%;
-	right: 20%;
-	background: url("./img/16.jpeg") no-repeat 50% 50%;
+	top: 33%;
+	left: 42%;
+	background: url("./img/czeck_republic_1.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(17) {
-	bottom: 50%;
-	right: 5%;
-	background: url("./img/17.jpeg") no-repeat 50% 50%;
+	top: 36%;
+	left: 44%;
+	background: url("./img/czeck_republic_2.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(18) {
-	bottom: 25%;
-	right: 15%;
-	background: url("./img/18.jpeg") no-repeat 50% 50%;
+	top: 38%;
+	left: 40%;
+	background: url("./img/czeck_republic_3.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(19) {
-	bottom: 5%;
-	right: 3%;
-	background: url("./img/19.jpeg") no-repeat 50% 50%;
+	top: 43%;
+	right: 12%;
+	background: url("./img/ukraine_1.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 95%;
 }
 .block:nth-child(20) {
-	bottom: 0;
-	right: 10%;
-	background: url("./img/20.jpeg") no-repeat 50% 50%;
+	top: 40%;
+	right: 19%;
+	background: url("./img/ukraine_2.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 90%;
 }
 .block:nth-child(21) {
-	top: 2%;
-	left: 50%;
-	background: url("./img/21.jpeg") no-repeat 50% 50%;
+	bottom: 10%;
+	left: 5%;
+	background: url("./img/france_1.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 90%;
 }
 .block:nth-child(22) {
-	top: 35%;
-	left: 63%;
-	background: url("./img/22.jpeg") no-repeat 50% 50%;
+	bottom: 20%;
+	left: 0%;
+	background: url("./img/france_2.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 90%;
 }
 .block:nth-child(23) {
-	top: 45%;
+	top: 50%;
 	left: 25%;
-	background: url("./img/23.jpeg") no-repeat 50% 50%;
+	background: url("./img/switzerland_1.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 90%;
 }
 .block:nth-child(24) {
-	top: 60%;
-	left: 27%;
-	background: url("./img/24.jpeg") no-repeat 50% 50%;
+	bottom: 13%;
+	right: 30%;
+	background: url("./img/romania_1.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 75%;
 }
 .block:nth-child(25) {
-	top: 12%;
-	left: 70%;
-	background: url("./img/25.jpeg") no-repeat 50% 50%;
+	bottom: 13%;
+	right: 25%;
+	background: url("./img/romania_2.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 85%;
 }
 .block:nth-child(26) {
-	bottom: 12%;
-	right: 70%;
-	background: url("./img/26.jpeg") no-repeat 50% 50%;
+	bottom: 5%;
+	right: 32%;
+	background: url("./img/romania_3.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
-}
-/* 
+	opacity: 50%;	
+	background-size: 90%;
+} 
 .block:nth-child(27) {
-	top: 0;
-	left: 10%;
-	background: url("./img/27.jpeg") no-repeat 50% 50%;
+	bottom: 5%;
+	right: 25%;
+	background: url("./img/romania_4.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 75%;
 }
-
 .block:nth-child(28) {
-	top: 5%;
-	left: 0%;
-	background: url("./img/28.jpeg") no-repeat 50% 50%;
+	top: 10%;
+	left: -2%;
+	background: url("./img/uk_1.JPG") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 95%;
 }
-
 .block:nth-child(29) {
-	top: 25%;
-	left: 15%;
-	background: url("./img/29.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;
-}
-.block:nth-child(30) {
-	top: 50%;
-	left: 10%;
-	background: url("./img/30.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;
-}
-.block:nth-child(31) {
-	top: 8%;
-	left: 20%;
-	background: url("./img/31.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;
-}
-.block:nth-child(32) {
-	top: 40%;
-	left: 0%;
-	background: url("./img/32.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;
-}
-.block:nth-child(33) {
-	top: 65%;
-	left: 3%;
-	background: url("./img/33.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;
-}
-.block:nth-child(34) {
-	top: 75%;
-	left: 20%;
-	background: url("./img/34.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;
-}
-.block:nth-child(35) {
-	top: 0;
-	left: 35%;
-	background: url("./img/35.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;
-}
-.block:nth-child(36) {
-	top: 25%;
-	left: 40%;
-	background: url("./img/36.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;
-}
-.block:nth-child(37) {
-	bottom: 0;
-	right: 35%;
-	background: url("./img/37.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;
-}
-.block:nth-child(38) {
-	bottom: 75%;
-	right: 20%;
-	background: url("./img/38.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;
-}
-.block:nth-child(39) {
-	bottom: 65%;
-	right: 3%;
-	background: url("./img/39.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;
-}
-.block:nth-child(40) {
 	bottom: 35%;
 	right: 45%;
-	background: url("./img/40.jpeg") no-repeat 50% 50%;
+	background: url("./img/hungary_1.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
+}
+.block:nth-child(30) {
+	bottom: 32%;
+	right: 43%;
+	background: url("./img/hungary_2.JPG") no-repeat 50% 50%;
+	background-size: cover;
+	opacity: 50%;	
+	background-size: 50%;
+}
+.block:nth-child(31) {
+	bottom: 27%;
+	right: 44%;
+	background: url("./img/hungary_3.jpg") no-repeat 50% 50%;
+	background-size: cover;
+	opacity: 50%;	
+	background-size: 50%;
+}
+.block:nth-child(32) {
+	bottom: 32%;
+	right: 46%;
+	background: url("./img/hungary_4.jpg") no-repeat 50% 50%;
+	background-size: cover;
+	opacity: 50%;	
+	background-size: 50%;
+}
+.block:nth-child(33) {
+	bottom: 25%;
+	right: 48%;
+	background: url("./img/hungary_5.jpg") no-repeat 50% 50%;
+	background-size: cover;
+	opacity: 50%;	
+	background-size: 50%;
+}
+.block:nth-child(34) {
+	bottom: 22%;
+	right: 38%;
+	background: url("./img/hungary_6.jpg") no-repeat 50% 50%;
+	background-size: cover;
+	opacity: 50%;	
+	background-size: 50%;
+}
+.block:nth-child(35) {
+	bottom: 27%;
+	right: 40%;
+	background: url("./img/hungary_7.jpg") no-repeat 50% 50%;
+	background-size: cover;
+	opacity: 50%;	
+	background-size: 50%;
+}
+.block:nth-child(36) {
+	bottom: 22%;
+	right: 42%;
+	background: url("./img/hungary_8.jpg") no-repeat 50% 50%;
+	background-size: cover;
+	opacity: 50%;	
+	background-size: 50%;
+}
+.block:nth-child(37) {
+	bottom: 25%;
+	right: 50%;
+	background: url("./img/hungary_9.jpg") no-repeat 50% 50%;
+	background-size: cover;
+	opacity: 50%;	
+	background-size: 50%;
+}
+.block:nth-child(38) {
+	bottom: 8%;
+	right: 50%;
+	background: url("./img/croatia_1.jpg") no-repeat 50% 50%;
+	background-size: cover;
+	opacity: 50%;	
+	background-size: 50%;
+}
+.block:nth-child(39) {
+	bottom: 10%;
+	right: 47%;
+	background: url("./img/croatia_2.jpg") no-repeat 50% 50%;
+	background-size: cover;
+	opacity: 50%;	
+	background-size: 50%;
+}
+.block:nth-child(40) {
+	bottom: 0%;
+	right: 40%;
+	background: url("./img/serbia_1.jpg") no-repeat 50% 50%;
+	background-size: cover;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(41) {
-	bottom: 40%;
-	right: 0%;
-	background: url("./img/41.jpeg") no-repeat 50% 50%;
+	bottom: 15%;
+	left: 35%;
+	background: url("./img/slovenia_1.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(42) {
-	bottom: 8%;
-	right: 20%;
-	background: url("./img/42.jpeg") no-repeat 50% 50%;
+	bottom: 15%;
+	left: 31%;
+	background: url("./img/slovenia_2.jpg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
+/*
 .block:nth-child(43) {
 	bottom: 50%;
 	right: 5%;
 	background: url("./img/43.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(44) {
 	bottom: 25%;
 	right: 15%;
 	background: url("./img/44.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(45) {
 	bottom: 5%;
 	right: 3%;
 	background: url("./img/45.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(46) {
 	bottom: 0;
 	right: 10%;
 	background: url("./img/46.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(47) {
 	top: 2%;
 	left: 50%;
 	background: url("./img/47.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(48) {
 	top: 35%;
 	left: 63%;
 	background: url("./img/48.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(49) {
 	top: 45%;
 	left: 25%;
 	background: url("./img/49.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(50) {
 	top: 60%;
 	left: 27%;
 	background: url("./img/50.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(51) {
 	top: 12%;
 	left: 70%;
 	background: url("./img/51.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(52) {
 	bottom: 12%;
 	right: 70%;
 	background: url("./img/52.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 } 
 .block:nth-child(53) {
 	top: 0;
 	left: 10%;
 	background: url("./img/53.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 
 .block:nth-child(54) {
@@ -417,7 +468,8 @@ html {
 	left: 0%;
 	background: url("./img/54.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 
 .block:nth-child(55) {
@@ -425,314 +477,359 @@ html {
 	left: 15%;
 	background: url("./img/55.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(56) {
 	top: 50%;
 	left: 10%;
 	background: url("./img/56.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(57) {
 	top: 8%;
 	left: 20%;
 	background: url("./img/57.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(58) {
 	top: 40%;
 	left: 0%;
 	background: url("./img/58.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(59) {
 	top: 65%;
 	left: 3%;
 	background: url("./img/59.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(60) {
 	top: 75%;
 	left: 20%;
 	background: url("./img/60.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(61) {
 	top: 0;
 	left: 35%;
 	background: url("./img/61.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(62) {
 	top: 25%;
 	left: 40%;
 	background: url("./img/62.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(63) {
 	bottom: 0;
 	right: 35%;
 	background: url("./img/63.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(64) {
 	bottom: 75%;
 	right: 20%;
 	background: url("./img/64.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(65) {
 	bottom: 65%;
 	right: 3%;
 	background: url("./img/65.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(66) {
 	bottom: 35%;
 	right: 45%;
 	background: url("./img/66.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(67) {
 	bottom: 40%;
 	right: 0%;
 	background: url("./img/67.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(68) {
 	bottom: 8%;
 	right: 20%;
 	background: url("./img/68.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(69) {
 	bottom: 50%;
 	right: 5%;
 	background: url("./img/69.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(70) {
 	bottom: 25%;
 	right: 15%;
 	background: url("./img/70.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(71) {
 	bottom: 5%;
 	right: 3%;
 	background: url("./img/71.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(72) {
 	bottom: 0;
 	right: 10%;
 	background: url("./img/72.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(73) {
 	top: 2%;
 	left: 50%;
 	background: url("./img/73.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(74) {
 	top: 35%;
 	left: 63%;
 	background: url("./img/74.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(75) {
 	top: 45%;
 	left: 25%;
 	background: url("./img/75.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(76) {
 	top: 60%;
 	left: 27%;
 	background: url("./img/76.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(77) {
 	top: 12%;
 	left: 70%;
 	background: url("./img/77.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(78) {
 	bottom: 12%;
 	right: 70%;
 	background: url("./img/78.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(79) {
 	bottom: 50%;
 	right: 5%;
 	background: url("./img/79.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(80) {
 	bottom: 25%;
 	right: 15%;
 	background: url("./img/80.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(81) {
 	bottom: 5%;
 	right: 3%;
 	background: url("./img/81.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(82) {
 	bottom: 0;
 	right: 10%;
 	background: url("./img/82.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(83) {
 	top: 2%;
 	left: 50%;
 	background: url("./img/83.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(84) {
 	top: 35%;
 	left: 63%;
 	background: url("./img/84.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(85) {
 	top: 45%;
 	left: 25%;
 	background: url("./img/85.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(86) {
 	top: 60%;
 	left: 27%;
 	background: url("./img/86.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(87) {
 	top: 12%;
 	left: 70%;
 	background: url("./img/87.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(88) {
 	bottom: 12%;
 	right: 70%;
 	background: url("./img/88.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(89) {
 	bottom: 50%;
 	right: 5%;
 	background: url("./img/89.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(90) {
 	bottom: 25%;
 	right: 15%;
 	background: url("./img/90.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(91) {
 	bottom: 5%;
 	right: 3%;
 	background: url("./img/91.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(92) {
 	bottom: 0;
 	right: 10%;
 	background: url("./img/92.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(93) {
 	top: 2%;
 	left: 50%;
 	background: url("./img/93.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(94) {
 	top: 35%;
 	left: 63%;
 	background: url("./img/94.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(95) {
 	top: 45%;
 	left: 25%;
 	background: url("./img/95.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(96) {
 	top: 60%;
 	left: 27%;
 	background: url("./img/96.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(97) {
 	top: 12%;
 	left: 70%;
 	background: url("./img/97.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(98) {
 	bottom: 12%;
 	right: 70%;
 	background: url("./img/98.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 .block:nth-child(99) {
 	bottom: 50%;
 	right: 5%;
 	background: url("./img/99.jpeg") no-repeat 50% 50%;
 	background-size: cover;
-	opacity: 50%;
+	opacity: 50%;	
+	background-size: 50%;
 }
 */
