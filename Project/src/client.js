@@ -87,9 +87,11 @@ function checkOverlap(dot) {
     if (overlaps) {
       // Apply hover effect
       block.style.zIndex = 2;
+      block.style.opacity = 100;
     } else {
       // Remove hover effect
       block.style.zIndex = ""; // Or any default z-index value
+      block.style.opacity = "";
     }
   });
 }
@@ -101,11 +103,11 @@ function updateDotPosition(alpha, beta) {
 function updateBasedOnDot() {
   // Extract the dot's current position
   const dotRect = dot.getBoundingClientRect();
-  const mouseX = dotRect.left + dotRect.width / 2,
-    mouseY = dotRect.top + dotRect.height / 2;
+  const dotX = dotRect.left + dotRect.width / 2,
+    dotY = dotRect.top + dotRect.height / 2;
 
-  const xDecimal = mouseX / window.innerWidth,
-    yDecimal = mouseY / window.innerHeight;
+  const xDecimal = dotX / window.innerWidth,
+    yDecimal = dotY / window.innerHeight;
 
   const maxX = gallery.offsetWidth - window.innerWidth,
     maxY = gallery.offsetHeight - window.innerHeight;
@@ -147,65 +149,87 @@ function updateBasedOnDot() {
     block;
   while (i--) {
     block = blocks[i];
-    dx = (block.cx - mouseX) ** 2;
-    dy = (block.cy - mouseY) ** 2;
-    block.tween.progress(1 - (dx + dy) / radius2);
+    dx = (block.cx - dotX) ** 2;
+    dy = (block.cy - dotY) ** 2;
+    let distance = Math.sqrt(dx + dy);
+
+    if (distance > radius) {
+      console.log(
+        "Block",
+        i,
+        "is far. Distance:",
+        distance,
+        "Resetting scale."
+      );
+      gsap.to(block, { scale: 1, ease: "power1.inOut", duration: 0.5 }); // Reset scale with animation
+    } else {
+      let progress = Math.max(0, 1 - distance / radius);
+      console.log(
+        "Block",
+        i,
+        "is near. Distance:",
+        distance,
+        "Progress:",
+        progress
+      );
+      block.tween.progress(progress);
+    }
   }
 }
 
 // mouse event
 
-window.onmousemove = (e) => {
-  const mouseX = e.clientX,
-    mouseY = e.clientY;
+// window.onmousemove = (e) => {
+//   const mouseX = e.clientX,
+//     mouseY = e.clientY;
 
-  const xDecimal = mouseX / window.innerWidth,
-    yDecimal = mouseY / window.innerHeight;
+//   const xDecimal = mouseX / window.innerWidth,
+//     yDecimal = mouseY / window.innerHeight;
 
-  const maxX = gallery.offsetWidth - window.innerWidth,
-    maxY = gallery.offsetHeight - window.innerHeight;
+//   const maxX = gallery.offsetWidth - window.innerWidth,
+//     maxY = gallery.offsetHeight - window.innerHeight;
 
-  const panX = maxX * xDecimal * -1,
-    panY = maxY * yDecimal * -1;
+//   const panX = maxX * xDecimal * -1,
+//     panY = maxY * yDecimal * -1;
 
-  gallery.animate(
-    {
-      transform: `translate(${panX}px, ${panY}px)`,
-    },
-    {
-      duration: 4000,
-      fill: "forwards",
-      easing: "ease",
-    }
-  );
-};
+//   gallery.animate(
+//     {
+//       transform: `translate(${panX}px, ${panY}px)`,
+//     },
+//     {
+//       duration: 4000,
+//       fill: "forwards",
+//       easing: "ease",
+//     }
+//   );
+// };
 
-const radius = 300,
-  maxScale = 3,
-  blocks = document.querySelectorAll(".block"),
-  radius2 = radius * radius,
-  container = document.querySelector("#gallery");
+// const radius = 300,
+//   maxScale = 3,
+//   blocks = document.querySelectorAll(".block"),
+//   radius2 = radius * radius,
+//   container = document.querySelector("#gallery");
 
-blocks.forEach((block) => {
-  let b = block.getBoundingClientRect();
-  (block.cx = b.left + b.width / 2 + window.scrollX),
-    (block.cy = b.top + b.height / 2 + window.scrollY);
+// blocks.forEach((block) => {
+//   let b = block.getBoundingClientRect();
+//   (block.cx = b.left + b.width / 2 + window.scrollX),
+//     (block.cy = b.top + b.height / 2 + window.scrollY);
 
-  block.tween = gsap
-    .to(block, { scale: maxScale, ease: "power1.in", paused: true })
-    .progress(1)
-    .progress(0);
-});
+//   block.tween = gsap
+//     .to(block, { scale: maxScale, ease: "power1.in", paused: true })
+//     .progress(1)
+//     .progress(0);
+// });
 
-document.addEventListener("mousemove", (e) => {
-  let i = blocks.length,
-    dx,
-    dy,
-    block;
-  while (i--) {
-    block = blocks[i];
-    dx = (block.cx - e.pageX) ** 2;
-    dy = (block.cy - e.pageY) ** 2;
-    block.tween.progress(1 - (dx + dy) / radius2);
-  }
-});
+// document.addEventListener("mousemove", (e) => {
+//   let i = blocks.length,
+//     dx,
+//     dy,
+//     block;
+//   while (i--) {
+//     block = blocks[i];
+//     dx = (block.cx - e.pageX) ** 2;
+//     dy = (block.cy - e.pageY) ** 2;
+//     block.tween.progress(1 - (dx + dy) / radius2);
+//   }
+// });
