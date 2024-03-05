@@ -2,7 +2,6 @@ const key =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml4dnV1Y29oY3JtcGFvc21hcmVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDkwMzc4NTcsImV4cCI6MjAyNDYxMzg1N30.t9D300Gp5TOIIbYANc9VYtJwM8lgZ42y_4FYfVRbfW4";
 const url = "https://ixvuucohcrmpaosmarep.supabase.co";
 const database = supabase.createClient(url, key);
-
 const contentX = document.getElementById("x");
 const contentY = document.getElementById("y");
 const contentTime = document.getElementById("time");
@@ -10,7 +9,6 @@ const contentId = document.getElementById("id");
 const contentAlpha = document.getElementById("alpha");
 const contentBeta = document.getElementById("beta");
 const contentGamma = document.getElementById("gamma");
-
 const dot = document.getElementById("spotlight");
 const gallery = document.getElementById("gallery");
 const id = 1;
@@ -42,9 +40,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 function handleInserts(data) {
   console.log(data);
 
-  updateDotPosition(data.values.x, data.values.y);
+  // Assuming your container is 100x100 units
+  let normalizedBeta = normalize(data.values.beta, 0, 40, 30, -70); // Invert y-axis
+  let normalizedAlpha = normalizeAlpha(data.values.alpha, 200, 140, 0, 100);
+
+   dot.setAttribute(
+     "style",
+     `left:${normalizedAlpha}%; top:${normalizedBeta / 2}%;`
+   );
+
+  updateDotPosition(data.values.alpha, data.values.beta);
   updateBasedOnDot();
-  adjustGalleryMargins(data);
 
   contentX.innerHTML = data.values.x;
   contentY.innerHTML = data.values.y;
@@ -55,26 +61,19 @@ function handleInserts(data) {
   contentGamma.innerHTML = data.values.gamma;
 }
 
-function adjustGalleryMargins(data) {
-  const gallery = document.getElementById("gallery");
-
-  const marginLeft = mapRange(data.values.alpha, 60, 300, -50, 50);
-  const marginTop = mapRange(data.values.beta, 0, 40, -5, 5);
-
-  // Apply the calculated margins to the gallery
-  gallery.style.marginLeft = `${marginLeft}vw`;
-  gallery.style.marginTop = `${marginTop}vw`;
+function normalize(value, min, max, newMin, newMax) {
+  return ((value - min) / (max - min)) * (newMax - newMin) + newMin;
 }
 
-function mapRange(value, fromSource, toSource, fromTarget, toTarget) {
-  return (
-    ((value - fromSource) / (toSource - fromSource)) * (toTarget - fromTarget) +
-    fromTarget
-  );
-}
-
-function updateDotPosition(x, y) {
-  checkOverlap(dot);
+function normalizeAlpha(alpha, minAlpha, maxAlpha, newMin, newMax) {
+  // Normalize alpha within its range, considering the circular nature (140 to 220)
+  if (alpha > 180) {
+    // Map from 180 to 220 to the right half
+    return normalize(alpha, 180, maxAlpha, (newMax - newMin) / 2, newMax);
+  } else {
+    // Map from 140 to 180 to the left half
+    return normalize(alpha, minAlpha, 180, newMin, (newMax - newMin) / 2);
+  }
 }
 
 function checkOverlap(dot) {
@@ -100,6 +99,10 @@ function checkOverlap(dot) {
       block.style.opacity = "";
     }
   });
+}
+
+function updateDotPosition(alpha, beta) {
+  checkOverlap(dot);
 }
 
 function updateBasedOnDot() {
@@ -130,7 +133,9 @@ function updateBasedOnDot() {
 
   const radius = 300,
     maxScale = 3,
-    blocks = document.querySelectorAll(".block");
+    blocks = document.querySelectorAll(".block"),
+    radius2 = radius * radius,
+    container = document.querySelector("#gallery");
 
   blocks.forEach((block) => {
     let b = block.getBoundingClientRect();
@@ -154,10 +159,82 @@ function updateBasedOnDot() {
     let distance = Math.sqrt(dx + dy);
 
     if (distance > radius) {
+      console.log(
+        "Block",
+        i,
+        "is far. Distance:",
+        distance,
+        "Resetting scale."
+      );
       gsap.to(block, { scale: 1, ease: "power1.inOut", duration: 0.5 }); // Reset scale with animation
     } else {
       let progress = Math.max(0, 1 - distance / radius);
+      console.log(
+        "Block",
+        i,
+        "is near. Distance:",
+        distance,
+        "Progress:",
+        progress
+      );
       block.tween.progress(progress);
     }
   }
 }
+
+// mouse event
+
+// window.onmousemove = (e) => {
+//   const mouseX = e.clientX,
+//     mouseY = e.clientY;
+
+//   const xDecimal = mouseX / window.innerWidth,
+//     yDecimal = mouseY / window.innerHeight;
+
+//   const maxX = gallery.offsetWidth - window.innerWidth,
+//     maxY = gallery.offsetHeight - window.innerHeight;
+
+//   const panX = maxX * xDecimal * -1,
+//     panY = maxY * yDecimal * -1;
+
+//   gallery.animate(
+//     {
+//       transform: `translate(${panX}px, ${panY}px)`,
+//     },
+//     {
+//       duration: 4000,
+//       fill: "forwards",
+//       easing: "ease",
+//     }
+//   );
+// };
+
+// const radius = 300,
+//   maxScale = 3,
+//   blocks = document.querySelectorAll(".block"),
+//   radius2 = radius * radius,
+//   container = document.querySelector("#gallery");
+
+// blocks.forEach((block) => {
+//   let b = block.getBoundingClientRect();
+//   (block.cx = b.left + b.width / 2 + window.scrollX),
+//     (block.cy = b.top + b.height / 2 + window.scrollY);
+
+//   block.tween = gsap
+//     .to(block, { scale: maxScale, ease: "power1.in", paused: true })
+//     .progress(1)
+//     .progress(0);
+// });
+
+// document.addEventListener("mousemove", (e) => {
+//   let i = blocks.length,
+//     dx,
+//     dy,
+//     block;
+//   while (i--) {
+//     block = blocks[i];
+//     dx = (block.cx - e.pageX) ** 2;
+//     dy = (block.cy - e.pageY) ** 2;
+//     block.tween.progress(1 - (dx + dy) / radius2);
+//   }
+// });
