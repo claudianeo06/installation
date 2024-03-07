@@ -15,7 +15,7 @@ html {
 	margin-left: 5vw;
 	margin-top: -5vw;
 }
-/* #spotlight{
+#spotlight{
 	width: 100px;
 	height: 100px;
 	background-color: rgb(233, 224, 224);
@@ -24,8 +24,8 @@ html {
 	margin-left: -5.5vw;
 	margin-top: -2.5vw;
 	transition: all 0.5s ease;
-	opacity: 50%;
-} */
+	opacity: 0%;
+}
 #overlay {
 	display: none;
 	position: fixed;
@@ -159,6 +159,38 @@ html {
 	margin: 0 auto; 
 	object-fit: contain; 
 }
+
+
+.cross {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 4;
+
+  }
+
+  .cross::before, .cross::after {
+	content: '';
+	position: absolute;
+	background-color: white; /* or any color you prefer */
+  }
+  
+  .cross::before {
+	/* Horizontal line */
+	width: 70px; /* Adjust the length as needed */
+	height: 1px; /* Adjust the thickness as needed */
+	top: -0.50px; /* Half of the thickness to center it */
+	left: -35px; /* Half of the length to center it */
+  }
+  
+  .cross::after {
+	/* Vertical line */
+	width: 1px; /* Adjust the thickness as needed */
+	height: 70px; /* Adjust the length as needed */
+	top: -35px; /* Half of the length to center it */
+	left: -0.50px; /* Half of the thickness to center it */
+  }
 
 .block {
 	position: absolute;

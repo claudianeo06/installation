@@ -151,9 +151,6 @@ function getInfo() {
 
   let smallfont = document.getElementById('Header1');
   smallfont.style.fontSize = "15px";
-
-
-
 }
 
 

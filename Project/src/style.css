@@ -1,47 +1,221 @@
-/* Default stylesheet and tools */
-body,
-html {
-	background: rgb(245, 245, 245);
-	padding: 0;
+body, html {
+	background: black;
 	margin: 0;
-	font-size: 12px;
-	padding: 5px;
+	padding: 0;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column; /* Change to column to stack children vertically */
+	justify-content: space-between;
+	align-items: center;
+	overflow: hidden;
+	position: relative; /* Ensures absolute positioned elements are relative to the document */
+  }
+  
+  #main {
+	width: 100%;
+	max-width: 100vw; /* Ensures #main does not exceed the viewport width */
+	height: 100%;
+	flex-grow: 1; /* Allows #main to expand and fill available space, pushing footer down */
+	display: flex;
+	flex-direction: column; /* Stacks children vertically */
+	justify-content: center;
+	align-items: center;
+  }
 
+  #interactive-display {
+	position: fixed; /* Absolute position within #main */
+	transform: translateY(-50%);
+	top: 50%; /* Center vertically */
+	left: 50%; /* Center horizontally */
+	transform: translate(-50%, -50%); /* Offset the element by half its width and height */  
+	/*border: 1px solid red;*/
 }
 
-#container {
-	position: relative;
-
-}
-
-@media (max-width:960px) { 
-
-}
-
-.spotlight{
-	width: 30px;
-	height: 30px;
-	background-color: black;
-	border-radius: 50%;
-	position:fixed;
-}
-
-#spotlight{
-	width: 20px;
-	height: 20px;
-	background-color: red;
-	border-radius: 50%;
-	position:relative;
-	transition: all 0.5s ease;
-
-}
-
-.screen {
+#action-footer {
 	position: fixed;
+	top: 75%;
+	height: auto;
+	width: 100%; /* Full width */
+	padding-bottom: 10px;
+	text-align: center; /* Center its contents */
+	/*border: 1px solid yellow;*/
+  }
+
+  header {
+	position: fixed;
+	height: auto;
+	width: 100%;
+	color: white; /* Changes the text color */
+	font-size: 24px; /* Sets the size of the font */
+	text-align: center; /* Centers the text horizontally */
+	font-weight: 200; /* Makes the font bold */
+	font-family: 'Space Grotesk', sans-serif; /* Specifies the font family */
+	/* Additional styling */
+	text-transform: uppercase; /* Transforms the text to uppercase */
+	/*border: 1px solid blue;*/
+
+  }
+
+  header h1 {
+	margin: auto; /* Center within their container */
+	margin-top: 10px;
+	color: white; /* Changes the text color */
+	font-size: 24px; /* Sets the size of the font */
+	text-align: center; /* Centers the text horizontally */
+	font-weight: 200; /* Makes the font bold */
+	padding: 20px 10px; /* Adds top and bottom padding */
+	font-family: 'Space Grotesk', sans-serif; /* Specifies the font family */
+	/* Additional styling */
+	text-transform: uppercase; /* Transforms the text to uppercase */
+	/*border: 1px solid blue;*/
+
+  }
+
+  #goBackButton {
+	margin: auto; /* Center within their container */
+	margin-top: 5px;
+	background-color: black; /* Styling adjustments */
+	color: white;
+	padding: 14px 20px;
+	border: 1px solid white;
+	border-radius: 3px;
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 12pt;
+	display: none;
+	}
+  
+#x, #y, #alpha, #beta, #gamma, #time, #id {
+	/*color: white;*/
+	display: none;
+  }
+
+  #accelPermsButton {
+  margin: auto; /* Center within their container */
+  margin-top: 30px;
+  background-color: #000; /* Styling adjustments */
+  color: white;
+  padding: 14px 20px;
+  border: 1px solid white;
+  border-radius: 3px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12pt;
+  }  
+
+  #newButtonId {
+	margin: auto; /* Center within their container */
+	margin-top: 10px;
+	background-color: #000; /* Styling adjustments */
+	color: white;
+	padding: 14px 20px;
+	border: 1px solid white;
+	border-radius: 3px;
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 12pt;
+	display:none;
+  }
+  
+
+.compass {
+	position: relative;
+	width: 80vw; /* 50% of the viewport width */
+	height: 80vw; /* keeps the aspect ratio 1:1 */
+	max-width: 400px;
+	max-height: 400px;
+	margin: 0 auto; /* Centers compass in the flex container */
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  
+  .svg circle{
+	position: relative;
+	width: 100%;
+	height: auto;
+  }
+  
+  .indicator {
+	position: absolute;
+    bottom: 50%; /* Position the bottom of the line at the vertical center */
+    left: 50%; /* Align the line's horizontal position to the center */
+    height: 170px; /* Or the length you want */
+    width: 2px; /*Or the thickness you want */
+    background-color: white;
+    transform-origin: bottom; /* Rotate around the bottom end */
+    z-index: 1;
+}
+  
+  .center-point {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 8%;
+	height: 8%;
+	border-radius: 50%;
+	border: 0.8px solid #fff;
+	transform: translate(-50%, -50%);
+	z-index: 3;
+  } 
+
+  .cross {
+	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 100%;
-	height: 100%;
-	background-color: #eee;
-}
+	z-index: 4;
+
+  }
+
+  .cross::before, .cross::after {
+	content: '';
+	position: absolute;
+	background-color: white; /* or any color you prefer */
+  }
+  
+  .cross::before {
+	/* Horizontal line */
+	width: 70px; /* Adjust the length as needed */
+	height: 1px; /* Adjust the thickness as needed */
+	top: -0.50px; /* Half of the thickness to center it */
+	left: -35px; /* Half of the length to center it */
+  }
+  
+  .cross::after {
+	/* Vertical line */
+	width: 1px; /* Adjust the thickness as needed */
+	height: 70px; /* Adjust the length as needed */
+	top: -35px; /* Half of the length to center it */
+	left: -0.50px; /* Half of the thickness to center it */
+  }
+
+  	.ring {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	top: 50%;
+	left: 50%;
+	background: black;
+	transform: translate(-50%, -50%); /* Center the rings */
+	border: 1px solid black;
+	border-radius: 50%;
+	z-index: 2;
+  } 
+  
+  #instructions {
+	text-align: center; /* Centers the text within the element */
+	color: white; /* Sets the text color */
+	font-size: 15px; /* Sets the text size */
+	font-family: 'Space Grotesk', sans-serif; /* Sets the font */
+	padding: 10px 0px; /* Adds some padding above and below the text */
+	display:none;
+  }
+
+  .metadata {
+	text-align: center; /* Centers the text within the element */
+	color: white; /* Sets the text color */
+	font-size: 15px; /* Sets the text size */
+	font-family: 'Space Grotesk', sans-serif; /* Sets the font */
+	padding: 10px 0; /* Adds some padding above and below the text */
+  } 
