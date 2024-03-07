@@ -42,9 +42,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 function handleInserts(data) {
   console.log(data);
 
-  // updateDotPosition(data.values.x, data.values.y);
-  // updateBasedOnDot();
-  // adjustGalleryMargins(data);
+  updateDotPosition(data.values.x, data.values.y);
+  updateBasedOnDot();
+  adjustGalleryMargins(data);
 
   contentX.innerHTML = data.values.x;
   contentY.innerHTML = data.values.y;

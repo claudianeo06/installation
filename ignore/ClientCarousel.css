@@ -1,0 +1,57 @@
+
+.carousel {
+	display: flex;
+	max-width: 600px;
+	width: 70vw;
+	scroll-behavior: smooth;
+	overflow: auto;
+	scroll-snap-type: x mandatory;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar{
+	display: none;
+}
+
+.carousel-item {
+	flex: 0 0 auto; 
+	width: 30%; 
+	scroll-snap-align: start; 
+}
+  
+.carousel-item img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+  
+.carousel-images img {
+	width: 100%;
+	display: none;
+	-webkit-user-drag: none;
+	-khtml-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+  
+.carousel-images img:first-child {
+	display: block;
+}
+  
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+	border: none;
+	font-size: 24px;
+} */
+/*   
+.prev { left: 0; }
+.next { right: 0; } 

@@ -26,6 +26,139 @@ html {
 	transition: all 0.5s ease;
 	opacity: 50%;
 } */
+#overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.8); 
+	z-index: 1000; 
+	justify-content: center;
+	align-items: center;
+}
+
+#closeOverlay{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
+
+#overlay-country{
+	position: fixed;
+	top: 30px;
+	left: 0;
+	height: 50px;
+	width: 100%;
+	z-index: 10; 
+	color: white; 
+	font-size: 50px; 
+	text-align: center; 
+	font-weight: 400; 
+	padding: 20px 0;
+	font-family: 'Space Grotesk', sans-serif; 
+	text-transform: uppercase;
+}
+
+#overlay-coordinates{
+	position: fixed;
+	top: 100px;
+	left: 0;
+	height: 50px;
+	width: 100%;
+	z-index: 10; 
+	color: white; 
+	font-size: 40px; 
+	text-align: center; 
+	font-weight: 300; 
+	padding: 20px 0;
+	font-family: 'Space Grotesk', sans-serif; 
+	text-transform: uppercase;
+}
+
+.slide-text {
+	text-align: center;
+	font-size: 24px;
+	color: #fff; /* Adjust color based on your overlay's background */
+	margin-top: 20px; 
+	font-family: 'Space Grotesk', sans-serif; 
+}  
+
+.swiper-container {
+	width: 100%;
+	height: 100%;
+}
+
+.swiper-wrapper {
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100px; 
+	height: 100%;
+}
+  
+.swiper-slide img {
+	display: block;
+	width: 400px; 
+	height: auto; 
+	margin: 0 auto; 
+	object-fit: contain; 
+	justify-content: center;
+	align-items: center;	
+}
+
+.swiper-button-next {
+	display: none !important;
+}
+
+.swiper-button-prev {
+	display: none !important;
+}
+
+.item-list::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+	flex: 0 0 auto; 
+	width: 50px; 
+	height: auto; 
+	margin-right: 10px; 
+}
+  
+.image-text {
+	text-align: center;
+	font-size: 24px;
+	color: #fff; /* Adjust color based on your overlay's background */
+	margin-top: 20px; 
+	font-family: 'Space Grotesk', sans-serif; 
+}  
+
+.responsive-image {
+	max-width: 400px;
+	height: auto;
+	display: block; 
+	margin: 0 auto; 
+	object-fit: contain; 
+}
+
+.carou-image{
+	max-width: 400px;
+	height: auto;
+	display: block; 
+	margin: 0 auto; 
+	object-fit: contain; 
+}
 
 .block {
 	position: absolute;
@@ -373,463 +506,3 @@ html {
 	opacity: 50%;	
 	background-size: 50%;
 }
-/*
-.block:nth-child(43) {
-	bottom: 50%;
-	right: 5%;
-	background: url("./img/43.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(44) {
-	bottom: 25%;
-	right: 15%;
-	background: url("./img/44.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(45) {
-	bottom: 5%;
-	right: 3%;
-	background: url("./img/45.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(46) {
-	bottom: 0;
-	right: 10%;
-	background: url("./img/46.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(47) {
-	top: 2%;
-	left: 50%;
-	background: url("./img/47.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(48) {
-	top: 35%;
-	left: 63%;
-	background: url("./img/48.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(49) {
-	top: 45%;
-	left: 25%;
-	background: url("./img/49.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(50) {
-	top: 60%;
-	left: 27%;
-	background: url("./img/50.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(51) {
-	top: 12%;
-	left: 70%;
-	background: url("./img/51.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(52) {
-	bottom: 12%;
-	right: 70%;
-	background: url("./img/52.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-} 
-.block:nth-child(53) {
-	top: 0;
-	left: 10%;
-	background: url("./img/53.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-
-.block:nth-child(54) {
-	top: 5%;
-	left: 0%;
-	background: url("./img/54.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-
-.block:nth-child(55) {
-	top: 25%;
-	left: 15%;
-	background: url("./img/55.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(56) {
-	top: 50%;
-	left: 10%;
-	background: url("./img/56.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(57) {
-	top: 8%;
-	left: 20%;
-	background: url("./img/57.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(58) {
-	top: 40%;
-	left: 0%;
-	background: url("./img/58.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(59) {
-	top: 65%;
-	left: 3%;
-	background: url("./img/59.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(60) {
-	top: 75%;
-	left: 20%;
-	background: url("./img/60.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(61) {
-	top: 0;
-	left: 35%;
-	background: url("./img/61.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(62) {
-	top: 25%;
-	left: 40%;
-	background: url("./img/62.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(63) {
-	bottom: 0;
-	right: 35%;
-	background: url("./img/63.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(64) {
-	bottom: 75%;
-	right: 20%;
-	background: url("./img/64.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(65) {
-	bottom: 65%;
-	right: 3%;
-	background: url("./img/65.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(66) {
-	bottom: 35%;
-	right: 45%;
-	background: url("./img/66.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(67) {
-	bottom: 40%;
-	right: 0%;
-	background: url("./img/67.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(68) {
-	bottom: 8%;
-	right: 20%;
-	background: url("./img/68.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(69) {
-	bottom: 50%;
-	right: 5%;
-	background: url("./img/69.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(70) {
-	bottom: 25%;
-	right: 15%;
-	background: url("./img/70.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(71) {
-	bottom: 5%;
-	right: 3%;
-	background: url("./img/71.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(72) {
-	bottom: 0;
-	right: 10%;
-	background: url("./img/72.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(73) {
-	top: 2%;
-	left: 50%;
-	background: url("./img/73.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(74) {
-	top: 35%;
-	left: 63%;
-	background: url("./img/74.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(75) {
-	top: 45%;
-	left: 25%;
-	background: url("./img/75.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(76) {
-	top: 60%;
-	left: 27%;
-	background: url("./img/76.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(77) {
-	top: 12%;
-	left: 70%;
-	background: url("./img/77.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(78) {
-	bottom: 12%;
-	right: 70%;
-	background: url("./img/78.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(79) {
-	bottom: 50%;
-	right: 5%;
-	background: url("./img/79.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(80) {
-	bottom: 25%;
-	right: 15%;
-	background: url("./img/80.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(81) {
-	bottom: 5%;
-	right: 3%;
-	background: url("./img/81.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(82) {
-	bottom: 0;
-	right: 10%;
-	background: url("./img/82.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(83) {
-	top: 2%;
-	left: 50%;
-	background: url("./img/83.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(84) {
-	top: 35%;
-	left: 63%;
-	background: url("./img/84.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(85) {
-	top: 45%;
-	left: 25%;
-	background: url("./img/85.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(86) {
-	top: 60%;
-	left: 27%;
-	background: url("./img/86.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(87) {
-	top: 12%;
-	left: 70%;
-	background: url("./img/87.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(88) {
-	bottom: 12%;
-	right: 70%;
-	background: url("./img/88.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(89) {
-	bottom: 50%;
-	right: 5%;
-	background: url("./img/89.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(90) {
-	bottom: 25%;
-	right: 15%;
-	background: url("./img/90.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(91) {
-	bottom: 5%;
-	right: 3%;
-	background: url("./img/91.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(92) {
-	bottom: 0;
-	right: 10%;
-	background: url("./img/92.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(93) {
-	top: 2%;
-	left: 50%;
-	background: url("./img/93.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(94) {
-	top: 35%;
-	left: 63%;
-	background: url("./img/94.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(95) {
-	top: 45%;
-	left: 25%;
-	background: url("./img/95.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(96) {
-	top: 60%;
-	left: 27%;
-	background: url("./img/96.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(97) {
-	top: 12%;
-	left: 70%;
-	background: url("./img/97.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(98) {
-	bottom: 12%;
-	right: 70%;
-	background: url("./img/98.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-.block:nth-child(99) {
-	bottom: 50%;
-	right: 5%;
-	background: url("./img/99.jpeg") no-repeat 50% 50%;
-	background-size: cover;
-	opacity: 50%;	
-	background-size: 50%;
-}
-*/

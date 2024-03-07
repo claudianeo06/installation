@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>MAIND - Metadata Compass</title>
+    <meta name="description" content="MAIND – SUPSI 2024" />
+    <link href="src/client.css" rel="stylesheet" />
+    <!-- 
+    <link rel="preload" href="./src/img/background.png" as="image">
+    <link rel="preload" href="./src/img/croatia_1.jpg" as="image">
+    <link rel="preload" href="./src/img/croatia_2.jpg" as="image">
+    <link rel="preload" href="./src/img/czeck_republic_2.jpg" as="image">
+    <link rel="preload" href="./src/img/czeck_republic_2.jpg" as="image">
+    <link rel="preload" href="./src/img/czeck_republic_3.jpg" as="image">
+    <link rel="preload" href="./src/img/serbia_1.jpg" as="image">
+    <link rel="preload" href="./src/img/slovenia_1.jpg" as="image">
+    <link rel="preload" href="./src/img/slovenia_2.jpg" as="image">
+    <link rel="preload" href="./src/img/switzerland_1.jpg" as="image">
+    <link rel="preload" href="./src/img/romania_1.jpg" as="image">
+    <link rel="preload" href="./src/img/romania_2.jpg" as="image">
+    <link rel="preload" href="./src/img/romania_3.jpg" as="image">
+    <link rel="preload" href="./src/img/romania_4.jpg" as="image">
+    <link rel="preload" href="./src/img/uk_1.JPG" as="image">
+    <link rel="preload" href="./src/img/ukraine_1.jpg" as="image">
+    <link rel="preload" href="./src/img/ukraine_2.jpg" as="image">
+    <link rel="preload" href="./src/img/poland_1.jpg" as="image">
+    <link rel="preload" href="./src/img/poland_2.jpg" as="image">
+    <link rel="preload" href="./src/img/poland_3.jpg" as="image">
+    <link rel="preload" href="./src/img/poland_4.jpg" as="image">
+    <link rel="preload" href="./src/img/poland_5.jpg" as="image">
+    <link rel="preload" href="./src/img/denmark_1.JPG" as="image">
+    <link rel="preload" href="./src/img/france_1.jpg" as="image">
+    <link rel="preload" href="./src/img/france_2.jpg" as="image">
+    <link rel="preload" href="./src/img/germany_1.jpg" as="image">
+    <link rel="preload" href="./src/img/germany_2.jpg" as="image">
+    <link rel="preload" href="./src/img/germany_3.jpg" as="image">
+    <link rel="preload" href="./src/img/germany_4.jpg" as="image">
+    <link rel="preload" href="./src/img/hungary_1.jpg" as="image">
+    <link rel="preload" href="./src/img/hungary_2.JPG" as="image">
+    <link rel="preload" href="./src/img/hungary_3.jpg" as="image">
+    <link rel="preload" href="./src/img/hungary_4.jpg" as="image">
+    <link rel="preload" href="./src/img/hungary_5.jpg" as="image">
+    <link rel="preload" href="./src/img/hungary_6.jpg" as="image">
+    <link rel="preload" href="./src/img/hungary_7.jpg" as="image">
+    <link rel="preload" href="./src/img/hungary_8.jpg" as="image">
+    <link rel="preload" href="./src/img/hungary_9.jpg" as="image">
+    <link rel="preload" href="./src/img/lithuania_1.jpg" as="image">
+    <link rel="preload" href="./src/img/netherlands_1.jpg" as="image">
+    <link rel="preload" href="./src/img/netherlands_2.jpg" as="image">
+    <link rel="preload" href="./src/img/netherlands_3.jpg" as="image">
+    <link rel="preload" href="./src/img/latvia_1.jpg" as="image"> 
+    -->
+  </head>
+  <body>
+    <!-- <div id="main">
+      X: <span id="x"></span><br />
+      Y: <span id="y"></span><br />
+      Alpha: <span id="alpha"></span><br />
+      Beta: <span id="beta"></span><br />
+      Gamma: <span id="gamma"></span><br />
+      TIME: <span id="time"></span><br />
+      ID: <span id="id"></span><br />
+    </div> -->
+
+    <div id="gallery">
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+    </div>
+
+    <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 100;">
+      <div id="carousel1" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/denmark_1.jpg" alt=""></div>
+      </div>
+      <div id="carousel2" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/latvia_1.jpg" alt=""></div>
+      </div>
+      <div id="carousel3" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/lithuania_1.jpg" alt=""></div>
+      </div>
+      <div id="carousel4" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/poland_1.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/poland_2.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/poland_3.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/poland_4.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/poland_5.jpg" alt=""></div>
+      </div>
+      <div id="carousel5" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/germany_1.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/germany_2.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/germany_3.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/germany_4.jpg" alt=""></div>
+      </div>
+      <div id="carousel6" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/netherlands_1.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/netherlands_2.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/netherlands_3.jpg" alt=""></div>
+      </div>
+      <div id="carousel7" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/czeck_republic_1.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/czeck_republic_2.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/czeck_republic_3.jpg" alt=""></div>
+      </div>
+      <div id="carousel8" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/ukraine_1.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/ukraine_2.jpg" alt=""></div>
+      </div>
+      <div id="carousel9" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/france_1.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/france_2.jpg" alt=""></div>
+      </div>
+      <div id="carousel10" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/switzerland_1.jpg" alt=""></div>
+      </div>
+      <div id="carousel11" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/romania_1.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/romania_2.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/romania_3.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/romania_4.jpg" alt=""></div></div>
+      <div id="carousel12" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/uk_1.jpg" alt=""></div>
+      </div>
+      <div id="carousel13" class="carousel" style="display: none;">C
+        <div class="carousel-item"><img src="./src/img/hungary_1.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/hungary_2.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/hungary_3.JPG" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/hungary_4.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/hungary_5.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/hungary_6.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/hungary_7.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/hungary_8.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/hungary_9.jpg" alt=""></div></div>
+      <div id="carousel14" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/croatia_1.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/croatia_2.jpg" alt=""></div>
+      </div>
+      <div id="carousel15" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/serbia_1.jpg" alt=""></div>
+      </div>
+      <div id="carousel16" class="carousel" style="display: none;">
+        <div class="carousel-item"><img src="./src/img/slovenia_1.jpg" alt=""></div>
+        <div class="carousel-item"><img src="./src/img/slovenia_2.jpg" alt=""></div>
+      </div>
+      
+      <button id="closeOverlay">Close</button>
+    </div>
+
+    <!-- <div id="spotlight" style="position: absolute; top: 50%; left: 50%;"></div> -->
+
+  </body>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+  <script src="src/client.js"></script>
+</html>
