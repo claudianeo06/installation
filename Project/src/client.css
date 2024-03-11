@@ -6,18 +6,19 @@ html {
 	width: 100vw;
 	margin: 0px;
 	overflow: hidden;
-	cursor: crosshair;
+	/* cursor: crosshair; */
+	cursor: none;
 }
 #gallery {
 	height: 110vh;
 	width: 110vw;
 	position: relative;
-	margin-left: 5vw;
-	margin-top: -5vw;
+	/* margin-left: 5vw;
+	margin-top: -5vw; */
 }
 #spotlight{
-	width: 100px;
-	height: 100px;
+	width: 50px;
+	height: 50px;
 	background-color: rgb(233, 224, 224);
 	border-radius: 75%;
 	position:relative;
@@ -160,37 +161,38 @@ html {
 	object-fit: contain; 
 }
 
-
 .cross {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 4;
+	width: 70px;
+	height: 70px;
 
-  }
+}
 
-  .cross::before, .cross::after {
+.cross::before, .cross::after {
 	content: '';
 	position: absolute;
 	background-color: white; /* or any color you prefer */
-  }
+}
   
-  .cross::before {
+.cross::before {
 	/* Horizontal line */
 	width: 70px; /* Adjust the length as needed */
 	height: 1px; /* Adjust the thickness as needed */
-	top: -0.50px; /* Half of the thickness to center it */
-	left: -35px; /* Half of the length to center it */
-  }
+	top: 50%; /* Half of the thickness to center it */
+	/*left: -35px; /* Half of the length to center it */
+}
   
-  .cross::after {
+.cross::after {
 	/* Vertical line */
 	width: 1px; /* Adjust the thickness as needed */
 	height: 70px; /* Adjust the length as needed */
-	top: -35px; /* Half of the length to center it */
-	left: -0.50px; /* Half of the thickness to center it */
-  }
+	/*top: -35px; /* Half of the length to center it */
+	left: 50%; /* Half of the thickness to center it */
+}
 
 .block {
 	position: absolute;
