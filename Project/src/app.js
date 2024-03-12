@@ -15,13 +15,13 @@ const contentgoBack = document.getElementById("button2");
 const contentIndex = document.getElementById("carouselIndex");
 
 const id = 1;
-let px = 50; // Position x and y
+let px = 50;
 let py = 50;
-let vx = 0.0; // Velocity x and y
+let vx = 0.0;
 let vy = 0.0;
 let bp1 = 0;
 let bp2 = 0;
-let updateRate = 1 / 60; // Sensor refresh rate
+let updateRate = 1 / 60;
 let tableName = "Metacompass";
 
 let b1pressed = false;
@@ -29,24 +29,18 @@ let b2pressed = false;
 let carouselnumber = 0;
 
 document.addEventListener("DOMContentLoaded", async () => {
-  //subscribe to changes in the
   database
     .channel(tableName)
     .on(
       "postgres_changes",
       { event: "*", schema: "public", table: tableName },
       (payload) => {
-        // handleInserts(payload.new);
         console.log(payload.new);
       }
     )
     .subscribe();
-
-  //select all data from sensors
   let { data, error } = await database.from(tableName).select("*");
   console.log(data[0]);
-
-  //send the first data to the dom
   handleInserts(data[0]);
 });
 
@@ -68,37 +62,29 @@ function handleInserts(data) {
 async function getAccel() {
   DeviceMotionEvent.requestPermission().then((response) => {
     if (response == "granted") {
-      // Add a listener to get smartphone orientation
-      // in the alpha-beta-gamma axes (units in degrees)
-
       // Remove the button after setting up the event listener
       document.getElementById("accelPermsButton").remove();
 
-      // Add this line to make the text appear
       document.getElementById("instructions").style.display = "block";
       document.getElementById("newButtonId").style.display = "block";
 
       window.addEventListener("deviceorientation", (event) => {
-        // Expose each orientation angle in a more readable way
         rotation_degrees = event.alpha;
         frontToBack_degrees = event.beta;
         leftToRight_degrees = event.gamma;
 
-        // Update velocity according to how tilted the phone is
-        // Since phones are narrower than they are long, double the increase to the x velocity
         vx = vx + leftToRight_degrees * updateRate * 2;
         vy = vy + frontToBack_degrees * updateRate;
 
-        // Update position and clip it to bounds
         px = px + vx * 0.5;
         if (px > 98 || px < 0) {
-          px = Math.max(0, Math.min(98, px)); // Clip px between 0-98
+          px = Math.max(0, Math.min(98, px));
           vx = 0;
         }
 
         py = py + vy * 0.5;
         if (py > 98 || py < 0) {
-          py = Math.max(0, Math.min(98, py)); // Clip py between 0-98
+          py = Math.max(0, Math.min(98, py));
           vy = 0;
         }
 
@@ -110,9 +96,6 @@ async function getAccel() {
           bp1 = 0;
           bp2 = 1;
         }
-
-        //dot = document.getElementsByClassName("dot")[0];
-        //dot.setAttribute("style", "left:" + px + "%;" + "top:" + py + "%;");
 
         contentX.innerHTML = px;
         contentY.innerHTML = py;
@@ -137,14 +120,13 @@ async function getAccel() {
         );
 
         // ------- movement of the indicator
-        var rotation_degrees = event.alpha; 
-        // Select the line element
+        var rotation_degrees = event.alpha;
         var indicator = document.getElementById("indicator");
         indicator.style.transform = `rotate(${rotation_degrees}deg)`;
 
         // ------- movement of the cross
-        const beta = event.beta; 
-        const maxMovement = 50; 
+        const beta = event.beta;
+        const maxMovement = 50;
         const clampedBeta = Math.max(-90, Math.min(90, beta));
         const movement = (clampedBeta / 90) * maxMovement;
 
@@ -158,14 +140,14 @@ async function getAccel() {
 function getInfo() {
   b1pressed = true;
   b2pressed = false;
-  const carouselnumber = data.values.carouselIndex;
+  //const carouselnumber = data.values.carouselIndex;
   // Remove the button after setting up the event listener
-  document.getElementById("newButtonId").style.display = "none";
-  document.getElementById("instructions").style.display = "none"; 
+  document.getElementById("newButtonId").style.display = "none"; // Hide instead of removing to potentially reuse
+  document.getElementById("instructions").style.display = "none"; // Hide instructions
 
   document.getElementById("goBackButton").style.display = "block";
-  // document.getElementById("France").style.display = "block"; // Show metadata
-  showLocation(carouselnumber);
+  document.getElementById("Poland").style.display = "block"; // Show metadata
+  //showLocation(carouselnumber);
 
   let smallfont = document.getElementById("Header1");
   smallfont.style.fontSize = "15px";
@@ -175,53 +157,54 @@ function goBack() {
   b1pressed = false;
   b2pressed = true;
   document.getElementById("goBackButton").style.display = "none";
-  hideAll();
+  document.getElementById("Poland").style.display = "none";
+  //   hideAll();
 
-  document.getElementById("newButtonId").style.display = "block"; 
-  document.getElementById("instructions").style.display = "block"; 
+  document.getElementById("newButtonId").style.display = "block"; // Hide instead of removing to potentially reuse
+  document.getElementById("instructions").style.display = "block"; // Hide instructions
 
   let smallfont = document.getElementById("Header1");
   smallfont.style.fontSize = "24px";
 }
 
-function showLocation(carouselIndex) {
-  hideAll();
-  if (carouselIndex === 1) {
-    document.getElementById("Denmark").style.display = "block";
-  } else if (carouselIndex === 2) {
-    document.getElementById("Latvia").style.display = "block";
-  } else if (carouselIndex === 3) {
-    document.getElementById("Lithuania").style.display = "block";
-  } else if (carouselIndex === 4) {
-    document.getElementById("Poland").style.display = "block";
-  } else if (carouselIndex === 5) {
-    document.getElementById("Germany").style.display = "block";
-  } else if (carouselIndex === 6) {
-    document.getElementById("Netherlands").style.display = "block";
-  } else if (carouselIndex === 7) {
-    document.getElementById("CzeckRepublic").style.display = "block";
-  } else if (carouselIndex === 8) {
-    document.getElementById("Ukraine").style.display = "block";
-  } else if (carouselIndex === 9) {
-    document.getElementById("France").style.display = "block";
-  } else if (carouselIndex === 10) {
-    document.getElementById("Switzerland").style.display = "block";
-  } else if (carouselIndex === 11) {
-    document.getElementById("Romania").style.display = "block";
-  } else if (carouselIndex === 12) {
-    document.getElementById("UnitedKingdom").style.display = "block";
-  } else if (carouselIndex === 13) {
-    document.getElementById("Hungary").style.display = "block";
-  } else if (carouselIndex === 14) {
-    document.getElementById("Croatia").style.display = "block";
-  } else if (carouselIndex === 15) {
-    document.getElementById("Serbia").style.display = "block";
-  } else if (carouselIndex === 16) {
-    document.getElementById("Slovenia").style.display = "block";
-  } else{
-    hideAll();
-  }
-}
+// async function showLocation(carouselIndex) {
+//   hideAll();
+//   if (carouselIndex === 1) {
+//     document.getElementById("Denmark").style.display = "block";
+//   } else if (carouselIndex === 2) {
+//     document.getElementById("Latvia").style.display = "block";
+//   } else if (carouselIndex === 3) {
+//     document.getElementById("Lithuania").style.display = "block";
+//   } else if (carouselIndex === 4) {
+//     document.getElementById("Poland").style.display = "block";
+//   } else if (carouselIndex === 5) {
+//     document.getElementById("Germany").style.display = "block";
+//   } else if (carouselIndex === 6) {
+//     document.getElementById("Netherlands").style.display = "block";
+//   } else if (carouselIndex === 7) {
+//     document.getElementById("CzeckRepublic").style.display = "block";
+//   } else if (carouselIndex === 8) {
+//     document.getElementById("Ukraine").style.display = "block";
+//   } else if (carouselIndex === 9) {
+//     document.getElementById("France").style.display = "block";
+//   } else if (carouselIndex === 10) {
+//     document.getElementById("Switzerland").style.display = "block";
+//   } else if (carouselIndex === 11) {
+//     document.getElementById("Romania").style.display = "block";
+//   } else if (carouselIndex === 12) {
+//     document.getElementById("UnitedKingdom").style.display = "block";
+//   } else if (carouselIndex === 13) {
+//     document.getElementById("Hungary").style.display = "block";
+//   } else if (carouselIndex === 14) {
+//     document.getElementById("Croatia").style.display = "block";
+//   } else if (carouselIndex === 15) {
+//     document.getElementById("Serbia").style.display = "block";
+//   } else if (carouselIndex === 16) {
+//     document.getElementById("Slovenia").style.display = "block";
+//   } else{
+//     hideAll();
+//   }
+// }
 
 function hideAll() {
   document.getElementById("Denmark").style.display = "none";
